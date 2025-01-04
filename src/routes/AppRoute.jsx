@@ -5,6 +5,7 @@ import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
 import { useStore } from '../ContextAPi/store/ContextProvide'
 import { GetProfile } from '../components/GetProfile'
+import CodeEditor from '../CodeEditor/CodeEditor'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -32,6 +33,7 @@ export const AppRoute = () => {
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/profile' element={<GetProfile />} />
+        <Route path='/editor' element={<CodeEditor />} />
       </Route>
 
       <Route element={<RestrictedRoutes />}>
