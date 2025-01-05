@@ -25,8 +25,9 @@ export const Dashboard = () => {
   const logout = async (e) => {
       e.preventDefault();
       try {
-        await onLogout();
         setIsAuth(false);
+        await onLogout();
+        
         localStorage.removeItem('isAuth')
         
       } catch (error) {

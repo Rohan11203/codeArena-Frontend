@@ -7,13 +7,13 @@ import { motion } from 'framer-motion';
 
 export function LandingPage() {
   return (
-    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center">
-      <div className="absolute inset-0 w-full h-full bg-black z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+    <div className="h-screen relative w-full overflow-hidden bg-[#0f0a19] flex flex-col items-center justify-center">
+      <div className="absolute bottom-10 inset-0 w-full h-full bg-black z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
  
       <Boxes />
-      <div className="relative flex flex-col items-center justify-center">
+      <div className="relative flex flex-col items-center justify-center bottom-8">
       {/* Background gradient effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-purple-700 opacity-20 blur-xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-600 opacity-20 blur-xl" />
       
       {/* Main content */}
       <motion.h1 

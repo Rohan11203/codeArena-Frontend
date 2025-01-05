@@ -78,7 +78,7 @@ export const Register = () => {
             required
           />
           <div className="text-red-500 text-sm mt-2 font-medium">{error}</div>
-          <div className="text-green-500 text-sm mt-2 font-medium">
+          <div className="text-green-500 text-sm my-4 mx-12 font-medium">
             {success}
           </div>
 

@@ -16,3 +16,7 @@ export async function onLogout(){
 export async function getProfile(){
   return await axios.get('http://localhost:3000/api/user/profile')
 }
+
+export async function submitCode(submitCodeData){
+  return await axios.post('http://localhost:3000/api/submit', submitCodeData)
+}
