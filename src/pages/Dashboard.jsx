@@ -8,9 +8,16 @@ import Logout from "../components/logout";
 export const Dashboard = () => {
   return (
     <Layout>
-      <div>
-        <h1>Dashboard</h1>
-        <p>Welcome to your dashboard</p>
+      <div className="bg-black h-screen">
+        <div className="flex justify-evenly gap-5">
+          <div className="mt-10 border border-gray-600  bg-blue-500 h-60 w-60">
+            Card
+          </div>
+
+          <div className="mt-10 border h-60 w-60 border-gray-600  bg-blue-500">
+            Card
+          </div>
+        </div>
       </div>
     </Layout>
   );
