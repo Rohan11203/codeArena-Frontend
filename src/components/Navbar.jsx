@@ -10,7 +10,7 @@ export const Navbar = () => {
   const { isAuth } = useStore();
   return (
     <div className="bg-black">
-      <nav className="pt-5 ">
+      <nav className="pt-5 pb-2">
       <div className=" max-w-7xl mx-auto px-6">
         <div className="border border-gray-500 flex items-center justify-between rounded-xl h-16">
           {/* Logo/Brand */}

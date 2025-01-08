@@ -5,6 +5,7 @@ import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
 import { useStore } from '../ContextAPi/store/ContextProvide'
 import PlayeGround from '../pages/PlayGround'
+import { PuzzleGame } from '../components/Puzzles'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -32,6 +33,7 @@ export const AppRoute = () => {
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/editor' element={<PlayeGround />} />
+        <Route path='/puzzle' element={<PuzzleGame />} />
       </Route>
 
       <Route element={<RestrictedRoutes />}>
