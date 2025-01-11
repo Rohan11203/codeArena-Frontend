@@ -1,44 +1,107 @@
+import { Image } from "lucide-react";
 import Layout from "./Layout";
+import image from "../assets/asus.jpg";
 
 export function PuzzleGame() {
-  return ( 
+  return (
     <Layout>
       <div className="bg-zinc-900 px-12 h-screen">
-      <div className="flex justify-evenly  gap-5 ">
-          <div className="mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
-            Card
+        <div className="flex justify-evenly  gap-5 ">
+          <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+              <div>
+                <h2>Info Abooue the card</h2>
+                <h2>Info Abooue the card</h2>
+              </div>
+            </div>
+            <img
+              className="w-full h-full object-cover"
+              src={image}
+              alt="cardImage"
+            />
           </div>
 
-          <div className="mt-10 border h-80  w-full border-gray-600  bg-blue-500">
-            Card
+          <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+              <div>
+                <h2>Info Abooue the card</h2>
+                <h2>Info Abooue the card</h2>
+              </div>
+            </div>
+            <img
+              className="w-full h-full object-cover"
+              src=""
+              alt="cardImage"
+            />
           </div>
         </div>
         <div>
           <h1 className="text-white font-poppins text-2xl pt-5">
-          Classic Puzzle - Easy
+            Classic Puzzle - Easy
           </h1>
-          <p className="text-white">Improve your skills by solving algorithmic puzzles</p>
+          <p className="text-white">
+            Improve your skills by solving algorithmic puzzles
+          </p>
 
           <div className="flex justify-evenly gap-5">
-          <div className="mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
-            Card
-          </div>
+            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+                <div>
+                  <h2>Info Abooue the card</h2>
+                  <h2>Info Abooue the card</h2>
+                </div>
+              </div>
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt="cardImage"
+              />
+            </div>
 
-          <div className="mt-10 border h-60 w-96 border-gray-600  bg-blue-500">
-            Card
-          </div>
+            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+                <div>
+                  <h2>Info Abooue the card</h2>
+                  <h2>Info Abooue the card</h2>
+                </div>
+              </div>
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt="cardImage"
+              />
+            </div>
 
-          <div className="mt-10 border h-60 w-96 border-gray-600  bg-blue-500">
-            Card
-          </div>
+            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+                <div>
+                  <h2>Info Abooue the card</h2>
+                  <h2>Info Abooue the card</h2>
+                </div>
+              </div>
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt="cardImage"
+              />
+            </div>
 
-          <div className="mt-10 border h-60 w-96 border-gray-600  bg-blue-500">
-            Card
+            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+                <div>
+                  <h2>Info Abooue the card</h2>
+                  <h2>Info Abooue the card</h2>
+                </div>
+              </div>
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt="cardImage"
+              />
+            </div>
           </div>
-        </div>
-        
         </div>
       </div>
     </Layout>
-  )
+  );
 }

@@ -1,3 +1,4 @@
+import { PuzzleGame } from "../components/Puzzles";
 
 export default function MultiPlayer(){
   return (
@@ -5,7 +6,8 @@ export default function MultiPlayer(){
       {/* 
         <CodeEditor />
       */}
-      MultiplayerGame
+      <PuzzleGame />
     </div>
+
   )
 }

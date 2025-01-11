@@ -17,7 +17,7 @@ const PricingCards = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen ">
+    <div className="flex justify-center items-center min-h-screen">
       <div className="flex -space-x-10">
         {/* Left Card */}
         <motion.div
