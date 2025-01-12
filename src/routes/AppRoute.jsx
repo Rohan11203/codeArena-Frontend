@@ -8,6 +8,7 @@ import PlayeGround from '../pages/PlayGround'
 import { PuzzleGame } from '../components/Puzzles'
 import SinglePlayer from '../pages/SinglePlayer'
 import MultiPlayer from '../pages/Multiplayer'
+import FlexboxFroggy from '../components/singlePlayerGames/FlexBoxGame'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -37,6 +38,7 @@ export const AppRoute = () => {
         <Route path='/editor' element={<PlayeGround />} />
         <Route path='/singleplayer' element={<SinglePlayer />} />
         <Route path='/multiplayer' element={<MultiPlayer />} />
+        <Route path='/froggy' element={<FlexboxFroggy />} />
       </Route>
 
       <Route element={<RestrictedRoutes />}>

@@ -1,12 +1,14 @@
 import { Image } from "lucide-react";
 import Layout from "./Layout";
 import image from "../assets/asus.jpg";
+import { NavLink } from "react-router-dom";
 
 export function PuzzleGame() {
   return (
     <Layout>
       <div className="bg-zinc-900 px-12 h-screen">
         <div className="flex justify-evenly  gap-5 ">
+          <NavLink to="/froggy">
           <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
               <div>
@@ -20,6 +22,7 @@ export function PuzzleGame() {
               alt="cardImage"
             />
           </div>
+          </NavLink>
 
           <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
