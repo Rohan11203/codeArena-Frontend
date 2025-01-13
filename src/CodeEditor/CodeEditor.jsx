@@ -6,10 +6,13 @@ import { CODE_SNIPPETS } from "./constans";
 import Output from "./Output";
 import Problem from "./Problem";
 import ChatSection from "./ChatSection";
+import { getProblem } from "../api/auth";
 const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState("");
   const [language, setLanguage] = useState("javascript");
+
+
 
   const onSelect = (language) => {
     setLanguage(language);

@@ -1,6 +1,7 @@
 import { Box, Button, Text, useToast } from "@chakra-ui/react";
 import { submitCode } from "../api/auth";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useStore } from "../ContextAPi/store/ContextProvide";
 
 const Output = ({ editorRef, language }) => {
   const toast = useToast();
@@ -10,7 +11,8 @@ const Output = ({ editorRef, language }) => {
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
-    if (!sourceCode) return;
+    if (!sourceCode) return;    
+    
 
     const problemId = "677a595c5494b68f51dff306";
     const value = {

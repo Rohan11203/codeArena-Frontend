@@ -1,5 +1,5 @@
 import React,{ createContext, useContext, useEffect, useRef, useState } from "react"
-import { getProfile } from "../../api/auth";
+import { getProblem, getProfile } from "../../api/auth";
 
 const MyContext = createContext(null);
 export const StoreProvider = ({children}) => {
@@ -26,11 +26,16 @@ export const StoreProvider = ({children}) => {
     }
   }
 
+  const getRandomProblem =async () => {
+    const response  = await getProblem();
+    console.log(response.data.problemId);
+  }
+
   
   
   
   return (
-    <MyContext.Provider value={{ isAuth, setIsAuth,xp,level,achievments,name,setXp,fetchInfo,roomId,wsRef,users,setUsers }}>
+    <MyContext.Provider value={{ isAuth, setIsAuth,xp,level,achievments,name,setXp,fetchInfo,roomId,wsRef,users,setUsers,getRandomProblem }}>
       {children}
     </MyContext.Provider>
   )
