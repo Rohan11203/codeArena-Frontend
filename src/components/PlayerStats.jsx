@@ -1,7 +1,9 @@
 import Image from "../assets/asus.jpg";
+import { useStore } from "../ContextAPi/store/ContextProvide";
 import AvtarUi from "./ui/avtar";
 
-export default function PlayerStats({xp, name,level,achievments}) {
+export default function PlayerStats() {
+  const { xp, name,level,achievments } = useStore();
   return (
     <div className="bg-gray-900 text-white rounded-lg shadow-lg p-6 h-3/4  w-1/4 flex flex-col items-center">
       <AvtarUi />

@@ -3,13 +3,12 @@ import Layout from "./Layout";
 import image from "../assets/asus.jpg";
 import { NavLink } from "react-router-dom";
 
-export function PuzzleGame() {
+export function SingleCard() {
   return (
     <Layout>
       <div className="bg-zinc-900 px-12 h-screen">
         <div className="flex justify-evenly  gap-5 ">
-          <NavLink to="/froggy">
-          <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
+          <NavLink to="/froggy" className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
               <div>
                 <h2>Info Abooue the card</h2>
@@ -21,10 +20,9 @@ export function PuzzleGame() {
               src={image}
               alt="cardImage"
             />
-          </div>
           </NavLink>
 
-          <div className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
+          <NavLink to="/froggy" className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
               <div>
                 <h2>Info Abooue the card</h2>
@@ -33,10 +31,10 @@ export function PuzzleGame() {
             </div>
             <img
               className="w-full h-full object-cover"
-              src=""
+              src={image}
               alt="cardImage"
             />
-          </div>
+          </NavLink>
         </div>
         <div>
           <h1 className="text-white font-poppins text-2xl pt-5">
@@ -47,21 +45,8 @@ export function PuzzleGame() {
           </p>
 
           <div className="flex justify-evenly gap-5">
-            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
-                <div>
-                  <h2>Info Abooue the card</h2>
-                  <h2>Info Abooue the card</h2>
-                </div>
-              </div>
-              <img
-                className="w-full h-full object-cover"
-                src={image}
-                alt="cardImage"
-              />
-            </div>
 
-            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -73,9 +58,9 @@ export function PuzzleGame() {
                 src={image}
                 alt="cardImage"
               />
-            </div>
+            </NavLink>
 
-            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -87,9 +72,9 @@ export function PuzzleGame() {
                 src={image}
                 alt="cardImage"
               />
-            </div>
+            </NavLink>
 
-            <div className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -101,7 +86,21 @@ export function PuzzleGame() {
                 src={image}
                 alt="cardImage"
               />
-            </div>
+            </NavLink>
+
+            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+                <div>
+                  <h2>Info Abooue the card</h2>
+                  <h2>Info Abooue the card</h2>
+                </div>
+              </div>
+              <img
+                className="w-full h-full object-cover"
+                src={image}
+                alt="cardImage"
+              />
+            </NavLink>
           </div>
         </div>
       </div>

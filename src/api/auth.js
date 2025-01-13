@@ -20,3 +20,7 @@ export async function getProfile(){
 export async function submitCode(submitCodeData){
   return await axios.post('http://localhost:3000/api/submit', submitCodeData)
 }
+
+export async function updateInfo(updateData){
+  return await axios.put('http://localhost:3000/api/user/update', updateData)
+}

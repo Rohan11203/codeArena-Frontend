@@ -1,7 +1,9 @@
 import React from 'react';
 import { ArrowRight, ArrowLeft, Code, Award } from 'lucide-react';
+import { useStore } from '../../ContextAPi/store/ContextProvide';
 
-const FlowDiagram = ({xp}) => {
+const FlowDiagram = () => {
+  const { xp } = useStore();
   // Node component for reusability
   const Node = ({ children, className, icon: Icon }) => (
     <div
