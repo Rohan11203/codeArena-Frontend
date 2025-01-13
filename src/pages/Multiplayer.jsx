@@ -1,10 +1,57 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Users, Share2 } from 'lucide-react';
 import Layout from '../components/Layout';
 import backImage from '../assets/backImage.jpg';
+import { useNavigate } from 'react-router-dom';
+import { useStore } from '../ContextAPi/store/ContextProvide';
 
 export default function ClashOfCode() {
   const [activeSection, setActiveSection] = useState('gameInfo');
+  const navigate = useNavigate();
+  const { wsRef,name,setUsers,roomId,fetchInfo } = useStore();
+
+    useEffect(() => {
+      fetchInfo();
+    },[]);
+
+
+  function handleMessage(data) {
+    if (Array.isArray(data.users)) {
+      setUsers(data.users);
+      console.log("Updated users array:", data.users);
+    } else {
+      console.warn("Received data does not contain a valid users array:", data);
+    }
+  }
+
+  const JoinRoom = () => {
+    wsRef.current = new WebSocket("ws://localhost:3000");
+    wsRef.current.onopen = () => {
+      console.log(name)
+      console.log('Connected to the server');
+      wsRef.current.send(JSON.stringify({ 
+        type: 'join', 
+        username: name,
+        roomId: roomId
+       })
+      );
+
+      wsRef.current.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        if (data.type === 'userList') {
+          handleMessage(data);
+        }
+        console.log('Received data:', data);
+      }
+      wsRef.current.onerror = () => {
+        console.log("Ws Error")
+      }
+
+    navigate(`/clashofcode1/${roomId}`);
+
+    };
+    alert('Joining a clash...');
+  }
 
   return (
    <Layout>
@@ -20,7 +67,7 @@ export default function ClashOfCode() {
             124,687 Players in the leaderboard
           </p>
         </div>
-        <button className="absolute top-4 right-4 bg-yellow-500 text-black font-bold py-2 px-4 rounded">
+        <button onClick={JoinRoom} className="absolute top-4 right-4 bg-yellow-500 text-black font-bold py-2 px-4 rounded">
           JOIN A CLASH
         </button>
       </div>

@@ -6,7 +6,6 @@ import { CODE_SNIPPETS } from "./constans";
 import Output from "./Output";
 import Problem from "./Problem";
 import ChatSection from "./ChatSection";
-import { Navbar } from "../components/Navbar";
 const CodeEditor = () => {
   const editorRef = useRef();
   const [value, setValue] = useState("");

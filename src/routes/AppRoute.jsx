@@ -9,6 +9,7 @@ import MultiPlayer from '../pages/Multiplayer'
 import FlexboxFroggy from '../components/singlePlayerGames/FlexBoxGame'
 import { SingleCard } from '../components/single-card-game'
 import ClashOfCode from '../pages/Multiplayer'
+import WaitingRoom from '../components/WaitingRoom'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -39,6 +40,7 @@ export const AppRoute = () => {
         <Route path='/singleplayer' element={<SingleCard />} />
         <Route path='/multiplayer' element={<ClashOfCode  />} />
         <Route path='/froggy' element={<FlexboxFroggy />} />
+        <Route path='/clashofcode1/:id' element={<WaitingRoom />} />
       </Route>
 
       <Route element={<RestrictedRoutes />}>

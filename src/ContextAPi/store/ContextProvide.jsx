@@ -1,4 +1,4 @@
-import React,{ createContext, useContext, useEffect, useState } from "react"
+import React,{ createContext, useContext, useEffect, useRef, useState } from "react"
 import { getProfile } from "../../api/auth";
 
 const MyContext = createContext(null);
@@ -10,6 +10,9 @@ export const StoreProvider = ({children}) => {
   const [level, setLevel] = useState(null);
   const [achievments, setAchievments] = useState(null);
   const [name, setName] = useState("");
+  const roomId = 123;
+  const wsRef = useRef(null);
+  const [users,setUsers] = useState([]);
 
   const fetchInfo = async () => {
     try {
@@ -27,7 +30,7 @@ export const StoreProvider = ({children}) => {
   
   
   return (
-    <MyContext.Provider value={{ isAuth, setIsAuth,xp,level,achievments,name,setXp,fetchInfo }}>
+    <MyContext.Provider value={{ isAuth, setIsAuth,xp,level,achievments,name,setXp,fetchInfo,roomId,wsRef,users,setUsers }}>
       {children}
     </MyContext.Provider>
   )

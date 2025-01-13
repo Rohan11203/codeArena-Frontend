@@ -24,3 +24,7 @@ export async function submitCode(submitCodeData){
 export async function updateInfo(updateData){
   return await axios.put('http://localhost:3000/api/user/update', updateData)
 }
+
+// export async function getProblemById(problemId){
+//   return await axios.get(`http://localhost:3000/api/problem/${problemId}`)
+// }
