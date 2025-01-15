@@ -41,7 +41,7 @@ const Output = ({ editorRef, language }) => {
     }
   };
   return (
-    <Box w="80vh">
+    <Box w="80vh" className="">
       <Text mb={2} fontSize="lg">
         Output
       </Text>

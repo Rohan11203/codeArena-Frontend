@@ -49,7 +49,6 @@ useEffect(() => {
     }, 1000);
   }
 
-  return () => clearInterval(interval); // Cleanup interval on component unmount
 }, []);
 
 

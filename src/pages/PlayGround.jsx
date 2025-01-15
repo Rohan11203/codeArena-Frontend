@@ -3,9 +3,7 @@ import Layout from "../components/Layout"
 
 const PlayeGround =  () => {
   return (
-    <Layout>
       <CodeEditor />
-    </Layout>
   )
 }
 

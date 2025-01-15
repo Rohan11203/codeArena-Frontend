@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import { getProblem, getProblemById } from "../api/auth";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 
-const Problem = ({title}) => {
+const ProblemDetails = ({title}) => {
   return (
-    <Box minH="80vh" border="1px solid">
-      <Box>
-        <Text fontSize="2xl">{title}</Text>        
-      </Box>
-    </Box>
+    <div className="">
+    <Text fontSize="2xl">{title}</Text>        
+    <Text fontSize="2xl">{title}</Text>        
+</div>
   );
 };
 
-export default Problem;
+export default ProblemDetails;
