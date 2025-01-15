@@ -36,7 +36,7 @@ export const AppRoute = () => {
 
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/clashofcode' element={<PlayeGround />} />
+        <Route path='/clashofcode/:id' element={<PlayeGround />} />
         <Route path='/singleplayer' element={<SingleCard />} />
         <Route path='/multiplayer' element={<ClashOfCode  />} />
         <Route path='/froggy' element={<FlexboxFroggy />} />

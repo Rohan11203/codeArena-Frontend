@@ -3,11 +3,15 @@ import { User, Clock, Check, X } from 'lucide-react';
 import { Card, CardBody, CardFooter } from '@chakra-ui/react';
 import { useStore } from '../ContextAPi/store/ContextProvide';
 import { useNavigate } from 'react-router-dom';
+import { getProblemById } from '../api/auth';
 
 const WaitingRoom = () => {
-  const { users,wsRef } = useStore();
+  const { users,wsRef,problemId } = useStore();
   const navigate = useNavigate();
-  const [timeLeft, setTimeLeft ] = useState(60);
+  const [timeLeft, setTimeLeft ] = useState(10);
+  const { problemDetails,setProblemDetails } = useStore();
+
+
 
   const onLeaveRoom = () => {
     if(wsRef.current?.readyState === WebSocket.OPEN){
@@ -16,19 +20,38 @@ const WaitingRoom = () => {
     navigate("/multiplayer")
   }
 
-  useEffect(() => {
-    const interval = setInterval(() => {
+
+
+useEffect(() => {
+  const fetchProblemDetails = async () => {
+    try {
+      const response = await getProblemById();
+      setProblemDetails(response.data);
+    } catch (error) {
+      console.error("Error fetching problem details:", error);
+    }
+  };
+
+  fetchProblemDetails();
+  let interval;
+
+  if (problemDetails.problem) {
+
+    interval = setInterval(() => {
       setTimeLeft((prevTime) => {
-        if(prevTime <= 1){
+        if (prevTime <= 1) {
           clearInterval(interval);
-          navigate(`/clashofcode`);
-        return 0;
+          navigate(`/clashofcode/${problemDetails.problem._id}`);
+          return 0;
         }
         return prevTime - 1;
-      })
-    },1000)
-    return () => clearInterval(interval);
-  },[navigate])
+      });
+    }, 1000);
+  }
+
+  return () => clearInterval(interval); // Cleanup interval on component unmount
+}, []);
+
 
   const getStatusIcon = (status) => {
     switch (status) {
