@@ -1,11 +1,10 @@
 import React, {
   createContext,
   useContext,
-  useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
-import { getProblem, getProblemById, getProfile } from "../../api/auth";
+import { getProfile } from "../../api/auth";
 
 const MyContext = createContext(null);
 export const StoreProvider = ({ children }) => {
@@ -19,7 +18,7 @@ export const StoreProvider = ({ children }) => {
   const roomId = 123;
   const wsRef = useRef(null);
   const [users, setUsers] = useState([]);
-  const [problemDetails,setProblemDetails] = useState({});
+  const [problemDetails, setProblemDetails] = useState({});
   const fetchInfo = async () => {
     try {
       const { data } = await getProfile();

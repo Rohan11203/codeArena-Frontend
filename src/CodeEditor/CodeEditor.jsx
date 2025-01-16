@@ -1,13 +1,8 @@
-import { Box, HStack } from "@chakra-ui/react";
 import Editor from "@monaco-editor/react";
-import { useEffect, useRef, useState } from "react";
-import { getProblemById } from "../api/auth";
+import { useRef, useState } from "react";
 import { useStore } from "../ContextAPi/store/ContextProvide";
-import ChatSection from "./ChatSection";
 import { CODE_SNIPPETS } from "./constans";
 import LanguageSelector from "./LanguageSelector";
-import Output from "./Output";
-import Problem from "./ProblemDetails";
 import ProblemDetails from "./ProblemDetails";
 import TestCases from "../components/TestCases";
 const CodeEditor = () => {
@@ -36,25 +31,11 @@ const CodeEditor = () => {
     <div>
       <ProblemDetails 
       title={problemDetails.problem.title}
+      description={problemDetails.problem.description}
+      difficulty={problemDetails.problem.difficulty}
+      examples={problemDetails.problem.examples}
+
       />
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
-      hadjskkj<br/>
     </div>
   </div>
 
