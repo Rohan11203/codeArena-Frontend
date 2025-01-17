@@ -19,6 +19,9 @@ export const StoreProvider = ({ children }) => {
   const wsRef = useRef(null);
   const [users, setUsers] = useState([]);
   const [problemDetails, setProblemDetails] = useState({});
+  const editorRef = useRef();
+  const [language, setLanguage] = useState("javascript");
+
   const fetchInfo = async () => {
     try {
       const { data } = await getProfile();
@@ -48,6 +51,9 @@ export const StoreProvider = ({ children }) => {
         setUsers,
         problemDetails,
         setProblemDetails,
+        editorRef,
+        setLanguage,
+        language
       }}
     >
       {children}

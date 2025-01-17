@@ -9,7 +9,7 @@ import { getProblemById } from '../api/auth';
 export default function ClashOfCode() {
   const [activeSection, setActiveSection] = useState('gameInfo');
   const navigate = useNavigate();
-  const { wsRef,name,setUsers,roomId,fetchInfo,problemId } = useStore();
+  const { wsRef,name,setUsers,roomId,fetchInfo } = useStore();
 
     useEffect(() => {
       fetchInfo();
