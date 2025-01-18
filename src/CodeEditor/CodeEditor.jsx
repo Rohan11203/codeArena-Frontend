@@ -4,22 +4,40 @@ import { useStore } from "../ContextAPi/store/ContextProvide";
 import { CODE_SNIPPETS } from "./constans";
 import LanguageSelector from "./LanguageSelector";
 import ProblemDetails from "./ProblemDetails";
-import TestCases from "../components/TestCases";
+import TestCases from "./TestCases.jsx";
+import {PROBLEM_SNIPPETS} from "../Boiler-Plate-Problems/two-sum-problem/constant.js";
+import PlayersInRoom from "./room-players.jsx";
 const CodeEditor = () => {
   const [value, setValue] = useState("");
 
   const { problemDetails, editorRef, language, setLanguage } = useStore();
 
-
+  const title = problemDetails.problem.title;
+  console.log(title);
+  
   const onSelect = (language) => {
     setLanguage(language);
-    setValue(CODE_SNIPPETS[language]);
+    const updateSnippet = PROBLEM_SNIPPETS[title][language] || 'Snippet not available';
+    setValue(updateSnippet);
   };
 
   const onMount = (editor) => {
     editorRef.current = editor;
     editor.focus();
   };
+
+  useEffect(() => {
+    if (problemDetails.problem?.title && language) {
+      const updatedSnippet =
+        PROBLEM_SNIPPETS[problemDetails.problem.title]?.[language] ||
+        "Snippet not available";
+      setValue(updatedSnippet);
+    }
+  }, [problemDetails.problem?.title, language]);
+  console.log("Selected Language:", language);
+console.log("Problem Title:", problemDetails.problem?.title);
+console.log("Snippet Value:", value);
+
 
   return (
     <div className="bg-[#0f0a19] h-screen w-full flex">
@@ -37,9 +55,9 @@ const CodeEditor = () => {
           </div>
         </div>
 
-        <div className="bg-pink-400 w-full p-4 flex-1 min-h-64 overflow-auto">
+        <div className="bg-black w-full p-4 flex-1 min-h-16 overflow-auto border border-1 ">
           {/* Players in Room */}
-          Players In Room
+          <PlayersInRoom />
         </div>
       </div>
 
@@ -52,7 +70,6 @@ const CodeEditor = () => {
             height="50vh"
             theme="vs-dark"
             language={language}
-            defaultValue={CODE_SNIPPETS[language]}
             value={value}
             onMount={onMount}
             onChange={(value) => setValue(value)}
@@ -60,7 +77,7 @@ const CodeEditor = () => {
         </div>
 
         {/* Test Cases Section */}
-        <div className="bg-blue-400 p-2 h-[30vh] overflow-auto">
+        <div className="bg-[#0f0a19] border border-1 p-2 h-[35vh] overflow-auto">
           <TestCases />
         </div>
       </div>

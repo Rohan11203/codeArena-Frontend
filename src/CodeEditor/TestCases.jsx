@@ -13,11 +13,14 @@ export default function TestCases() {
     if (!sourceCode) return;
 
     const testCases = problemDetails.problem.testCases;
+    const problemId = "678b4938ea3e387efcb82a5d";
+    console.log(`problem iD ${problemId}`);
     
     const value = {
       code: sourceCode,
       language,
-      testCases
+      testCases,
+      problemId,
     };
 
     try {
