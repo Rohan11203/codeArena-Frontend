@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { onLogin } from "../api/auth";
 import { useStore } from "../ContextAPi/store/ContextProvide";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [values, setValues] = useState({

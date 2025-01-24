@@ -1,4 +1,3 @@
-import Image from "../assets/asus.jpg";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import AvtarUi from "./ui/avtar";
 

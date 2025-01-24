@@ -4,7 +4,6 @@ import Layout from '../components/Layout';
 import backImage from '../assets/backImage.jpg';
 import { useNavigate } from 'react-router-dom';
 import { useStore } from '../ContextAPi/store/ContextProvide';
-import { getProblemById } from '../api/auth';
 
 export default function ClashOfCode() {
   const [activeSection, setActiveSection] = useState('gameInfo');

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { getProfile, onLogout } from "../api/auth";
 import Layout from "../components/Layout";
 import PlayerStats from "../components/PlayerStats";
 import FlowDiagram from "../components/ui/FlowDiagram";

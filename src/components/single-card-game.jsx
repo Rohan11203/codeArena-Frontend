@@ -1,4 +1,3 @@
-import { Image } from "lucide-react";
 import Layout from "./Layout";
 import image from "../assets/asus.jpg";
 import { NavLink } from "react-router-dom";

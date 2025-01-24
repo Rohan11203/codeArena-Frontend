@@ -1,5 +1,4 @@
 import CodeEditor from "../CodeEditor/CodeEditor"
-import Layout from "../components/Layout"
 
 const PlayeGround =  () => {
   return (
