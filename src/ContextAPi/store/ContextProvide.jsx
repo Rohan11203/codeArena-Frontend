@@ -41,6 +41,7 @@ export const StoreProvider = ({ children }) => {
         setIsAuth,
         xp,
         level,
+        setLevel,
         achievments,
         name,
         setXp,

@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { PulsingNavLink } from "./PulseLeaderBoard";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import Logout from "./logout";
 import GetProfileInfo from "./get-profile";
@@ -8,7 +7,7 @@ import GetProfileInfo from "./get-profile";
 export const Navbar = () => {
   const { isAuth } = useStore();
   return (
-    <div className="bg-black/[0.95]">
+    <div className="bg-black">
       <nav className="pt-5 pb-2">
         <div className=" max-w-7xl mx-auto px-6">
           <div className="border border-gray-800 flex items-center justify-between rounded-xl h-16">
@@ -21,9 +20,7 @@ export const Navbar = () => {
                 CodeArena
               </NavLink>
             </div>
-
-            <PulsingNavLink />
-
+            {/* Leaderboard */}
             {/* Auth Buttons */}
             <div className="w-1/3 pr-2 flex justify-end space-x-4">
               <NavLink
