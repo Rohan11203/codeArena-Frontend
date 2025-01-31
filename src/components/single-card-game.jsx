@@ -5,23 +5,23 @@ import { NavLink } from "react-router-dom";
 export function SingleCard() {
   return (
     <Layout>
-      <div className="bg-zinc-900 px-12 h-screen">
+      <div className="bg-black px-12 h-screen">
         <div className="flex justify-evenly  gap-5 ">
-          <NavLink to="/froggy" className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
+          <NavLink to="/froggy" className="relative mt-10  h-80 w-full">
+            <div className="absolute  inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
               <div>
                 <h2>Info Abooue the card</h2>
                 <h2>Info Abooue the card</h2>
               </div>
             </div>
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover rounded-xl"
               src={image}
               alt="cardImage"
             />
           </NavLink>
 
-          <NavLink to="/froggy" className="relative mt-10 border border-gray-600  bg-blue-500 h-80 w-full">
+          <NavLink to="/froggy" className="relative mt-10  h-80 w-full">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
               <div>
                 <h2>Info Abooue the card</h2>
@@ -29,7 +29,7 @@ export function SingleCard() {
               </div>
             </div>
             <img
-              className="w-full h-full object-cover"
+              className="w-full h-full rounded-xl object-cover"
               src={image}
               alt="cardImage"
             />
@@ -45,7 +45,7 @@ export function SingleCard() {
 
           <div className="flex justify-evenly gap-5">
 
-            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -53,13 +53,13 @@ export function SingleCard() {
                 </div>
               </div>
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={image}
                 alt="cardImage"
               />
             </NavLink>
 
-            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -67,13 +67,13 @@ export function SingleCard() {
                 </div>
               </div>
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={image}
                 alt="cardImage"
               />
             </NavLink>
 
-            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10 h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -81,13 +81,13 @@ export function SingleCard() {
                 </div>
               </div>
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={image}
                 alt="cardImage"
               />
             </NavLink>
 
-            <NavLink className="relative mt-10 border border-gray-600  bg-blue-500 h-60 w-96">
+            <NavLink className="relative mt-10  h-60 w-96">
               <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
                 <div>
                   <h2>Info Abooue the card</h2>
@@ -95,7 +95,7 @@ export function SingleCard() {
                 </div>
               </div>
               <img
-                className="w-full h-full object-cover"
+                className="w-full h-full rounded-xl object-cover"
                 src={image}
                 alt="cardImage"
               />

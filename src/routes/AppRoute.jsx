@@ -5,10 +5,10 @@ import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
 import { useStore } from '../ContextAPi/store/ContextProvide'
 import PlayeGround from '../pages/PlayGround'
-import FlexboxFroggy from '../components/singlePlayerGames/FlexBoxGame'
 import { SingleCard } from '../components/single-card-game'
 import ClashOfCode from '../pages/Multiplayer'
 import WaitingRoom from '../components/WaitingRoom'
+import FlexBoxArena from '../components/singlePlayerGames/FlexBoxArena'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -38,7 +38,7 @@ export const AppRoute = () => {
         <Route path='/clashofcode/:id' element={<PlayeGround />} />
         <Route path='/singleplayer' element={<SingleCard />} />
         <Route path='/multiplayer' element={<ClashOfCode  />} />
-        <Route path='/froggy' element={<FlexboxFroggy />} />
+        <Route path='/froggy' element={<FlexBoxArena />} />
         <Route path='/clashofcode1/:id' element={<WaitingRoom />} />
       </Route>
 

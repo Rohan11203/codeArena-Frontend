@@ -7,7 +7,7 @@ export default function PlayerStats() {
   const experienceXp  = xp / 10;
   const levelProgress = level * 10;
   return (
-    <div className="card w-96 bg-black border border-gray-800 text-white shadow-2xl">
+    <div className="hidden lg:block card w-96 h-fit bg-black border border-gray-800 text-white shadow-2xl">
       <div className="card-body items-center text-center">
         {/* Avatar Section */}
         <div className="avatar placeholder">
