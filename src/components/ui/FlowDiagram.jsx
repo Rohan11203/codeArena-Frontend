@@ -107,7 +107,7 @@ const FlowDiagram = () => {
 
   return (
     <div className="w-full  overflow-x-hidden max-w-6xl mx-auto p-8 bg-black rounded-xl shadow-lg">
-      <h2 className="text-3xl font-bold text-cyan-400 mb-12 text-center">
+      <h2 className="text-3xl font-bold text-cyan-500 mb-12 text-center">
         Level Progression
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4 relative">

@@ -11,7 +11,7 @@ const toggleMenu = () => {
   setIsMobileMenuOpen(!isMobileMenuOpen);
 };
   return (
-    <div className="bg-black overflow-x-hidden">
+    <div className="bg-black  h-fit ">
   <nav className="pt-5 pb-2">
     <div className="max-w-7xl mx-auto px-6">
       <div className="border border-gray-800 flex items-center justify-between rounded-xl h-16">

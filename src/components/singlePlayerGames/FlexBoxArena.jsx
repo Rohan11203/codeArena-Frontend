@@ -54,7 +54,7 @@ const FlexProperties = [
 
 export default function FlexBoxArena() {
   const [currentLevel, setCurrentLevel] = useState(0);
-  const [userCSS, setUserCSS] = useState("justify-content: flex-end");
+  const [userCSS, setUserCSS] = useState("");
   const [showHint, setShowHint] = useState(false);
   const { xp, setXp } = useStore();
   const [frogXp , setFrogXp] = useState(0);

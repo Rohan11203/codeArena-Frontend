@@ -11,10 +11,10 @@ export default function PlayersInRoom(){
           {users.map((user, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-4 w-64 rounded-lg bg-orange-600"
+              className="flex items-center justify-between p-4 w-64 rounded-lg bg-blue-600"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center">
                   <User size={20} />
                 </div>
                 <span className="font-medium">{user}</span>
