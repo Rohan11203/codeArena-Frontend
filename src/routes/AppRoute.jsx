@@ -1,5 +1,4 @@
 import { BrowserRouter, Navigate, Outlet, Route, Routes } from 'react-router-dom'
-import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
 import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
@@ -9,6 +8,7 @@ import { SingleCard } from '../components/single-card-game'
 import ClashOfCode from '../pages/Multiplayer'
 import WaitingRoom from '../components/WaitingRoom'
 import FlexBoxArena from '../components/singlePlayerGames/FlexBoxArena'
+import LandingPage from '../pages/LandingPage'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -31,7 +31,7 @@ export const AppRoute = () => {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<LandingPage />} />
 
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
