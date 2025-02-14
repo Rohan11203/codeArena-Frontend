@@ -31,11 +31,17 @@ export const Register = () => {
     }
   };
   return (
-    <div className="h-screen bg-slate-800 flex justify-center items-center">
-      <div className=" rounded-sm shadow-xl p-8 w-96">
-        <h2 className="text-2xl font-bold text-white mb-6">Register</h2>
-        <form onSubmit={onSubmit} className="grid">
-          <label className="block text-sm font-medium text-white mb-2">
+    <div className="h-screen flex justify-center  items-center">
+      <div className="rounded-2xl p-8 border-2 w-96">
+        <div className="flex flex-col items-center justify-center">
+          <h2 className="text-2xl font-semibold mb-6">Create an Account</h2>
+          <p className="text-center">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim
+            eveniet non 
+          </p>
+        </div>
+        <form onSubmit={onSubmit} className="flex flex-col ">
+          <label className="block text-sm font-medium  mb-2">
             Username
           </label>
           <input
@@ -44,12 +50,12 @@ export const Register = () => {
             id="name"
             name="name"
             value={values.name}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-800 focus:ring-2 text-white mb-2"
+            className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-2 text-white mb-2"
             placeholder="Enter your name"
             required
           />
 
-          <label className="block text-sm font-medium text-white mb-2">
+          <label className="block text-sm font-medium mb-2">
             Email
           </label>
 
@@ -59,19 +65,19 @@ export const Register = () => {
             id="email"
             name="email"
             value={values.email}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-800 focus:ring-2 text-white mb-2"
+            className="w-full px-4 py-2 border rounded-md  focus:ring-2 text-white mb-2"
             placeholder="test@gmail.com"
             required
           />
 
-          <label className="block text-sm font-medium text-white mb-2">
+          <label className="block text-sm font-medium mb-2">
             Password
           </label>
           <input
             onChange={onChange}
             type="password"
             value={values.password}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md bg-gray-800 focus:ring-2 text-white  mb-2"
+            className="w-full px-4 py-2 border  rounded-md  focus:ring-2 text-white  mb-2"
             id="password"
             name="password"
             placeholder="password"
