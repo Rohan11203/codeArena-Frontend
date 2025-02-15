@@ -1,28 +1,32 @@
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { Trophy, Swords, Gamepad2 } from 'lucide-react';
-
+import { motion } from "framer-motion"
 
 export default function PlayerStats() {
   const { xp, name,level,setLevel,achievments } = useStore();
   const experienceXp  = xp / 10;
   const levelProgress = level * 10;
   return (
-    <div className="hidden lg:block card w-96 h-fit bg-black border border-gray-800 text-white shadow-2xl">
+    <motion.div 
+    initial={{ opacity:0, x:-50 }}
+      animate={{ opacity:50, x:0 }}
+      transition={{ duration:0.6, ease:"easeInOut" }}
+    className="hidden lg:block card w-96 h-fit bg-black border border-[#cef241] text-white shadow-2xl">
       <div className="card-body items-center text-center">
         {/* Avatar Section */}
         <div className="avatar placeholder">
-          <div className="bg-gray-800 text-cyan-400 rounded-full w-24 ring ring-cyan-500 ring-offset-base-100 ring-offset-2">
-            <span className="text-3xl">{name[0]}</span>
+          <div className="bg-black rounded-full w-24 ring ring-[#cef241] ring-offset-[#cef241] ring-offset-2">
+            <span className="text-3xl font-medium text-white">{name[0]}</span>
           </div>
         </div>
         
         {/* Player Name */}
-        <h2 className="card-title text-2xl font-bold text-cyan-400 mt-4">{name}</h2>
+        <h2 className="card-title text-2xl font-bold text-[#cef241] mt-4">{name}</h2>
         
         {/* Stats Grid */}
         <div className="w-full space-y-4 mt-4">
           {/* XP Progress */}
-          <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+          <div className="p-4 rounded-lg border border-gray-800">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <Gamepad2 className="text-orange-500" size={18} />
@@ -38,7 +42,7 @@ export default function PlayerStats() {
           </div>
 
           {/* Level Progress */}
-          <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+          <div className=" p-4 rounded-lg border border-gray-800">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <Swords className="text-green-500" size={20} />
@@ -54,7 +58,7 @@ export default function PlayerStats() {
           </div>
 
           {/* Achievements Progress */}
-          <div className="bg-gray-900 p-4 rounded-lg border border-gray-800">
+          <div className=" p-4 rounded-lg border border-gray-800">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
                 <Trophy className="text-purple-500" size={20} />
@@ -74,6 +78,6 @@ export default function PlayerStats() {
           </div>
         </div>       
       </div>
-    </div>
+    </motion.div>
   );
 }

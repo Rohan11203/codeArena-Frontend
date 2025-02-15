@@ -5,6 +5,7 @@ import { Code2, Play, ChevronLeft, ChevronRight, Star, Info, CheckCircle2 } from
 import { Card, CardContent } from '../ui/Card';
 import { Button } from '../ui/ShadButton';
 import { toastStore } from "@chakra-ui/react";
+import { Navbar } from "../Navbar";
 
 const levels = [
   {
@@ -120,7 +121,8 @@ export default function FlexBoxArena() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 p-4">
+    <div className="min-h-screen bg-[#0f0f0f] p-4">
+      <Navbar />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -128,7 +130,7 @@ export default function FlexBoxArena() {
             <Code2 className="w-8 h-8 text-green-400" />
             <h1 className="text-2xl font-bold text-green-400">FlexBox Arena</h1>
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center  space-x-4">
             <div className="flex items-center space-x-2">
               <Star className="w-5 h-5 text-yellow-400" />
               <span className="text-yellow-400 font-medium">XP: {frogXp}</span>
@@ -140,14 +142,14 @@ export default function FlexBoxArena() {
         </div>
 
         {/* Main Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-6">
           {/* Left Panel */}
           <div className="space-y-6">
             <Card className="bg-gray-800 border-gray-700">
               <CardContent className="p-6">
-                <h2 className="text-xl text-gray-200 mb-4">
+                <h2 className="text-xl text-gray-200 my-4">
                   {levels[currentLevel].description}
-                  <span className="text-green-400">justify-content</span>
+                  <span className="text-green-400 ">justify-content</span>
                 </h2>
                 
                 <div className="space-y-4">
@@ -169,7 +171,7 @@ export default function FlexBoxArena() {
 
             <Card className="bg-gray-800 border-gray-700">
               <CardContent className="p-6">
-                <div className="relative">
+                <div className="relative pt-4">
                   <textarea
                     className="w-full h-48 bg-gray-900 text-gray-200 p-4 rounded-lg font-mono text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-400"
                     value={userCSS}

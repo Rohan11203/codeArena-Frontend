@@ -31,65 +31,68 @@ export const Register = () => {
     }
   };
   return (
-    <div className="h-screen flex justify-center  items-center">
-      <div className="rounded-2xl p-8 border-2 w-96">
-        <div className="flex flex-col items-center justify-center">
-          <h2 className="text-2xl font-semibold mb-6">Create an Account</h2>
-          <p className="text-center">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim
-            eveniet non 
+    <div className="h-screen flex justify-center items-center px-4">
+      <div className="rounded-2xl p-10 border-2 w-full max-w-md">
+        <div className="flex flex-col items-center text-center">
+          <h2 className="text-2xl font-semibold mb-4">Create an Account</h2>
+          <p className="font-light mb-6">
+            Join CodeArena and challenge the best! 🚀 Sign up now to compete in
+            real-time coding.
           </p>
         </div>
-        <form onSubmit={onSubmit} className="flex flex-col ">
-          <label className="block text-sm font-medium  mb-2">
-            Username
-          </label>
-          <input
-            onChange={onChange}
-            type="text"
-            id="name"
-            name="name"
-            value={values.name}
-            className="w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-2 text-white mb-2"
-            placeholder="Enter your name"
-            required
-          />
 
-          <label className="block text-sm font-medium mb-2">
-            Email
-          </label>
-
-          <input
-            onChange={onChange}
-            type="email"
-            id="email"
-            name="email"
-            value={values.email}
-            className="w-full px-4 py-2 border rounded-md  focus:ring-2 text-white mb-2"
-            placeholder="test@gmail.com"
-            required
-          />
-
-          <label className="block text-sm font-medium mb-2">
-            Password
-          </label>
-          <input
-            onChange={onChange}
-            type="password"
-            value={values.password}
-            className="w-full px-4 py-2 border  rounded-md  focus:ring-2 text-white  mb-2"
-            id="password"
-            name="password"
-            placeholder="password"
-            required
-          />
-          <div className="text-red-500 text-sm mt-2 font-medium">{error}</div>
-          <div className="text-green-500 text-sm my-4 mx-12 font-medium">
-            {success}
+        <form onSubmit={onSubmit} className="flex flex-col gap-6">
+          <div>
+            <label className="block text-sm font-medium mb-1">Username</label>
+            <input
+              onChange={onChange}
+              type="text"
+              id="name"
+              name="name"
+              value={values.name}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your name"
+              required
+            />
           </div>
 
+          <div>
+            <label className="block text-sm font-medium mb-1">Email</label>
+            <input
+              onChange={onChange}
+              type="email"
+              id="email"
+              name="email"
+              value={values.email}
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              placeholder="test@gmail.com"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">Password</label>
+            <input
+              onChange={onChange}
+              type="password"
+              value={values.password}
+              id="password"
+              name="password"
+              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          {error && (
+            <div className="text-red-500 text-sm font-medium">{error}</div>
+          )}
+          {success && (
+            <div className="text-green-500 text-sm font-medium">{success}</div>
+          )}
+
           <button
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+            className="w-full bg-[#cef241] font-medium py-2 px-4 rounded-md hover:bg-white hover:border transition-all"
             type="submit"
           >
             Submit

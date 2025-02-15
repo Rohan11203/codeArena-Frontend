@@ -56,7 +56,7 @@ const LandingPage = () => (
 
       <div className="flex items-center justify-center mt-8">
         <div className="lg:text-lg text-sm text-[#78787b] font-medium">
-          Available Figma File With Editable Assets
+        CodeArena Platform Stats & Features
         </div>
       </div>
     </div>

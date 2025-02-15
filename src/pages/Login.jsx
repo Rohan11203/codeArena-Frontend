@@ -4,6 +4,7 @@ import { useStore } from "../ContextAPi/store/ContextProvide";
 import { NavLink, useNavigate } from "react-router-dom";
 import SignInImage from "../assets/signinImage.png";
 import { Goal, TwitterIcon } from "lucide-react";
+
 export const Login = () => {
   const [values, setValues] = useState({
     email: "",
@@ -11,7 +12,7 @@ export const Login = () => {
   });
 
   const { isAuth, setIsAuth } = useStore();
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const onChange = (e) => {
@@ -32,56 +33,72 @@ export const Login = () => {
     }
   };
   return (
-    <div className="h-screen w-full">
-      <div className="flex h-full w-full">
-        <div className="w-1/2 flex items-center justify-center">
-          <img className="h-full w-full object-cover" src={SignInImage} />
-        </div>
+    <div className="h-screen w-full flex flex-col md:flex-row">
 
-        <div className="w-1/2 p-6">
-          <NavLink to={"/register"} className="flex justify-end p-6">
-            <h1 className="font-medium underline cursor-pointer">
-              Don't have an account signIn
-            </h1>
-          </NavLink>
+      <div className="hidden md:flex w-1/2 items-center justify-center">
+        <img className="h-full w-full object-cover" src={SignInImage} alt="Sign In" />
+      </div>
 
-          <div className="max-w-4xl grid gap-8 justify-center mt-16 mx-auto">
-            <div className="">
-              <h1 className="font-semibold text-2xl pl-2">Sign in</h1>
-            </div>
-            <div className="flex flex-col justify-center items-center gap-2 ">
-              <div className="w-96 p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-100 ">
-                <div ><TwitterIcon fill="#12c9e6" /></div>
-                <div>Continue with Twitter</div>
-              </div>
-              <div className="w-96 p-2 rounded-2xl flex justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-100">
-                <div><Goal /></div>
-                <div>Continue with Google</div>
-              </div>
-            </div>
-            <div className="flex gap-2 font-semibold">
-              <div className="pl-2 ">--------------------------- OR</div>
-              <div>----------------------------</div>
-            </div>
+      <div className="w-full md:w-1/2 p-6 flex flex-col items-center">
+        <NavLink to="/register" className="self-end p-4">
+          <h1 className="font-medium underline cursor-pointer text-sm sm:text-base">
+            Don't have an account? Sign Up
+          </h1>
+        </NavLink>
 
-            <div className="grid gap-2">
-              <p className="font-medium">User name or email address</p>
-              <input
-                type="text"
-                placeholder="Enter text"
-                className="w-96 border border-gray-300 rounded-lg  px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <p className="font-medium">Your Password</p>
-              <input
-                type="password"
-                placeholder="Enter text"
-                className="w-96 border border-gray-300 rounded-lg  px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+        <div className="w-full max-w-md sm:max-w-lg grid gap-6 mt-8 sm:mt-16 px-4">
+          <h1 className="font-semibold text-2xl text-center">Login In</h1>
+
+          <div className="flex flex-col items-center gap-3">
+            <div className="w-full max-w-md p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-100">
+              <TwitterIcon fill="#12c9e6" />
+              <span>Continue with Twitter</span>
             </div>
-            <div className="transition-all duration-300 hover:bg-gray-200 cursor-pointer p-4 w-1/2 bg-gray-400 rounded-3xl text-center">
-              Sign In
+            <div className="w-full max-w-md p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-100">
+              <Goal />
+              <span>Continue with Google</span>
             </div>
           </div>
+
+          {/* Divider */}
+          <div className="flex items-center gap-2 font-semibold text-sm sm:text-base">
+            <div className="flex-1 border-t border-gray-300"></div>
+            <span>OR</span>
+            <div className="flex-1 border-t border-gray-300"></div>
+          </div>
+
+          <div className="grid gap-3">
+            <label className="font-medium">Username or Email Address</label>
+            <input
+              onChange={onChange}
+              name="email"
+              value={values.email}
+              type="text"
+              placeholder="Enter your email or username"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <label className="font-medium">Password</label>
+            <input
+              onChange={onChange}
+              name="password"
+              value={values.password}
+              type="password"
+              placeholder="Enter your password"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          {
+            error && (
+              <div className="font-medium text-red-400 text-center lg:text-start">
+            {error}
+          </div>
+            )
+          }
+          <button 
+          onClick={onSubmit}
+          className="w-full max-w-xs bg-[#cef241] font-semibold p-3 rounded-3xl hover:border hover:bg-white  transition-all">
+            Login
+          </button>
         </div>
       </div>
     </div>
