@@ -1,6 +1,7 @@
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { Trophy, Swords, Gamepad2 } from 'lucide-react';
 import { motion } from "framer-motion"
+import { Button } from "./ui/Button";
 
 export default function PlayerStats() {
   const { xp, name,level,setLevel,achievments } = useStore();
@@ -10,7 +11,7 @@ export default function PlayerStats() {
     <motion.div 
     initial={{ opacity:0, x:-50 }}
       animate={{ opacity:50, x:0 }}
-      transition={{ duration:0.6, ease:"easeInOut" }}
+      transition={{ duration:0.8, ease:"easeInOut" }}
     className="hidden lg:block card w-96 h-fit bg-black border border-[#cef241] text-white shadow-2xl">
       <div className="card-body items-center text-center">
         {/* Avatar Section */}
@@ -59,7 +60,7 @@ export default function PlayerStats() {
 
           {/* Achievements Progress */}
           <div className=" p-4 rounded-lg border border-gray-800">
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between ">
               <div className="flex items-center gap-2">
                 <Trophy className="text-purple-500" size={20} />
                 <span className="font-bold text-gray-300">Achievements</span>
@@ -76,6 +77,8 @@ export default function PlayerStats() {
               }}
             />
           </div>
+
+          <Button />
         </div>       
       </div>
     </motion.div>

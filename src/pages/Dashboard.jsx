@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import PlayerStats from "../components/PlayerStats";
-import FlowDiagram from "../components/ui/FlowDiagram";
+import FlowDiagram from "../components/FlowDiagram";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { updateInfo } from "../api/auth";
+import { Button } from "../components/ui/Button";
 
 export const Dashboard = () => {
   const { fetchInfo,xp,setLevel } = useStore();
@@ -36,6 +37,9 @@ export const Dashboard = () => {
       <div className="bg-black h-screen p-10 flex justify-between gap-5" >
         <PlayerStats />
       <FlowDiagram />
+      {
+        console.log(xp)
+      }
       </div>
     </Layout>
   );

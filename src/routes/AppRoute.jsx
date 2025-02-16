@@ -9,6 +9,7 @@ import ClashOfCode from '../pages/Multiplayer'
 import WaitingRoom from '../components/WaitingRoom'
 import FlexBoxArena from '../components/singlePlayerGames/FlexBoxArena'
 import LandingPage from '../pages/LandingPage'
+import GridBoxArena from '../components/singlePlayerGames/GridBoxArena'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -39,6 +40,7 @@ export const AppRoute = () => {
         <Route path='/singleplayer' element={<SingleCard />} />
         <Route path='/multiplayer' element={<ClashOfCode  />} />
         <Route path='/froggy' element={<FlexBoxArena />} />
+        <Route path='/gridBox' element={<GridBoxArena />} />
         <Route path='/clashofcode1/:id' element={<WaitingRoom />} />
       </Route>
 

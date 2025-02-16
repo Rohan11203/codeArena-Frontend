@@ -1,10 +1,28 @@
+import { onLogout } from "../../api/auth";
+import { useStore } from "../../ContextAPi/store/ContextProvide";
 
-export const Button = () =>{
+export const Button = () => {
+  const { setIsAuth } = useStore();
+
+  const onClick = async (e) => {
+    try {
+      await onLogout();
+
+      setIsAuth(false);
+      localStorage.setItem("isAuth", "false");
+      navigate("/");
+    } catch (error) {
+      console.log(error.response.data.Error);
+    }
+  };
   return (
-    <div className="card-actions mt-6">
-    <button className="btn bg-cyan-500 hover:bg-cyan-600 text-black btn-wide border-0 shadow-lg shadow-cyan-500/50">
-      View Details
-    </button>
-  </div>
-  )
-}
+    <div className="card-actions">
+      <button
+        onClick={onClick}
+        className="btn bg-[#F2E741] hover:bg-[#cef241] text-black btn-wide border-0 "
+      >
+        Logout
+      </button>
+    </div>
+  );
+};

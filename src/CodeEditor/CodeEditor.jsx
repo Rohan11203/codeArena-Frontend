@@ -55,7 +55,7 @@ console.log("Snippet Value:", value);
           </div>
         </div>
 
-        <div className="bg-black w-full p-4 flex-1 min-h-16 overflow-auto border border-1 ">
+        <div className="bg-[0f0a19] w-full p-4 flex-1 min-h-16 overflow-auto border border-1 ">
           {/* Players in Room */}
           <PlayersInRoom />
         </div>
@@ -64,7 +64,7 @@ console.log("Snippet Value:", value);
       {/* Right Panel */}
       <div className="w-2/4 flex flex-col gap-4">
         {/* Code Editor Section */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col">
           <LanguageSelector language={language} onSelect={onSelect} />
           <Editor
             height="50vh"
@@ -78,7 +78,7 @@ console.log("Snippet Value:", value);
 
         {/* Test Cases Section */}
         <div className="bg-[#0f0a19] border border-1 p-2 h-[35vh] overflow-auto">
-          <TestCases />
+          <TestCases problemDetails={problemDetails} />
         </div>
       </div>
     </div>

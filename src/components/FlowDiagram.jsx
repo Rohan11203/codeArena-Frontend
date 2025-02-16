@@ -11,7 +11,7 @@ import {
   Zap,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useStore } from "../../ContextAPi/store/ContextProvide";
+import { useStore } from "../ContextAPi/store/ContextProvide";
 
 const FlowDiagram = () => {
   const { xp, level } = useStore();

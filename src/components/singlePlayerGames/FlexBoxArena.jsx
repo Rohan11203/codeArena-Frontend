@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../ContextAPi/store/ContextProvide";
 import { updateInfo } from "../../api/auth";
 import { Code2, Play, ChevronLeft, ChevronRight, Star, Info, CheckCircle2 } from 'lucide-react';
@@ -57,8 +57,12 @@ export default function FlexBoxArena() {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [userCSS, setUserCSS] = useState("");
   const [showHint, setShowHint] = useState(false);
-  const { xp, setXp } = useStore();
+  const { xp, setXp,fetchInfo } = useStore();
   const [frogXp , setFrogXp] = useState(0);
+
+  useEffect(() =>{
+    fetchInfo()
+  },[])
 
   const IncreaseXp = async () => {
     try {
@@ -66,7 +70,7 @@ export default function FlexBoxArena() {
         const updatedFrogXp = prevFrogXp + 5;
   
         setXp((prevXp = 0) => {
-          const newXp = (prevXp || 0) + updatedFrogXp;
+          const newXp = (xp || 0) + updatedFrogXp;
           const updateData = { totalScore: newXp };
   
           console.log(updateData);
@@ -122,6 +126,9 @@ export default function FlexBoxArena() {
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] p-4">
+      {
+        console.log(xp)
+      }
       <Navbar />
       <div className="max-w-7xl mx-auto">
         {/* Header */}

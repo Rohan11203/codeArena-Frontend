@@ -21,8 +21,8 @@ export const Navbar = () => {
           <div className="cursor-pointer hover:bg-[#2d2d2d] transition-all duration:0.6 hover:rounded-3xl hover:border-[#1d1d1d] hover:p-2 hover:px-4 ">Leaderboard</div>
           <div className="cursor-pointer hover:bg-[#2d2d2d] transition-all duration:0.6 hover:rounded-3xl hover:border-[#1d1d1d] hover:p-1 hover:px-4 ">
             <div className="dropdown dropdown-hover dropdown-bottom dropdown-end">
-            <div tabIndex={0} role="button" className=" m-1 flex gap-2 justify-center">Play</div>
-              <ul tabIndex={0} className="dropdown-content menu bg-[#cef241] rounded-box z-[1] w-52 text-black font-medium shadow">
+            <div tabIndex={0} role="button" className="m-1  flex gap-2 justify-center">Play</div>
+              <ul tabIndex={0} className="dropdown-content  menu bg-[#cef241] rounded-box z-[1] w-52 text-black font-medium shadow">
                 <li><a href="/singleplayer">Single Player</a></li>
                 <li><a href="/multiplayer">Multi Player </a></li>
               </ul>

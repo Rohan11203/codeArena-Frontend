@@ -59,51 +59,57 @@ const WaitingRoom = () => {
   };
 
   return (
-    <Card className="w-full max-w-md">
-      <CardBody className="space-y-1">
-        <div className="flex items-center justify-between">
-          <CardFooter className="text-2xl font-bold">Waiting Room</CardFooter>
-          <div className="flex items-center space-x-2">
-            <User size={20} />
-            <span className="font-medium">
-              {users.filter((p) => p.status !== "empty").length}/4
-            </span>
-          </div>
-        </div>
-      </CardBody>
-      <CardBody>
-        <div className="space-y-4">
-          {users.map((user, index) => (
-            <div
-              key={index}
-              className="flex items-center justify-between p-4 rounded-lg bg-gray-100"
-            >
-              <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-full bg-gray-300 flex items-center justify-center">
-                  <User size={20} />
-                </div>
-                <span className="font-medium">{user}</span>
+    <div className="w-screen h-screen bg-black  ">
+      <div className="w-full  h-full flex justify-center items-center">
+        <div className="max-w-xl px-8 py-4 bg-gray-800 rounded-xl">
+          <div className="space-y-1">
+            <div className="flex gap-4 items-center justify-between">
+              <div className="text-2xl text-white font-semibold p-4">Waiting Room</div>
+              <div className="flex items-center space-x-2">
+                <User size={20} />
+                <span className="font-medium">
+                  {users.filter((p) => p.status !== "empty").length}/4
+                </span>
               </div>
             </div>
-          ))}
-        </div>
-      </CardBody>
-      <CardFooter className="flex items-center justify-end p-4">
-        <button
-          className="text-white bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600"
-          onClick={onLeaveRoom}
-        >
-          Leave Room
-        </button>
-      </CardFooter>
+          </div>
 
-      <CardFooter>
-        <div className="flex items-center justify-between p-4 text-gray-400">
-          <span>Time left: {timeLeft} seconds</span>
-          <div>{getStatusIcon("waiting")}</div>
+          <div>
+            <div className="space-y-4">
+              {users.map((user, index) => (
+                <div
+                  key={index}
+                  className="flex items-center  justify-between p-4 rounded-xl bg-[#F2E741] "
+                >
+                  <div className="flex items-center  space-x-4">
+                    <div className="w-10 h-10 rounded-full border flex items-center justify-center">
+                      <User size={20} />
+                    </div>
+                    <span className="font-medium">{user}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center py-4">
+            <button
+              className="text-white bg-blue-500 px-4 py-2 rounded-md hover:bg-blue-600"
+              onClick={onLeaveRoom}
+            >
+              Leave Room
+            </button>
+          </div>
+
+          <div>
+            <div className="flex items-center justify-between p-4 text-gray-400">
+              <span>Time left: {timeLeft} seconds</span>
+              <div>{getStatusIcon("waiting")}</div>
+            </div>
+          </div>
         </div>
-      </CardFooter>
-    </Card>
+      </div>
+    </div>
   );
 };
 

@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { submitCode } from "../api/auth";
 
-export default function TestCases() {
-  const { editorRef, language, problemDetails } = useStore();
+export default function TestCases({ problemDetails }) {
+  const { editorRef, language } = useStore();
   const [results, setResults] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+
 
   const runCode = async () => {
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
 
     const testCases = problemDetails.problem.testCases;
-    const problemId = "678b4938ea3e387efcb82a5d";
+    const problemId = problemDetails.problemId;
     console.log(`problem iD ${problemId}`);
     
     const value = {
@@ -105,7 +107,7 @@ export default function TestCases() {
                 }`}
               >
                 <div className="flex justify-between items-start">
-                  <h3 className="font-medium">Test Case {detail.testCase}</h3>
+                  <h3 className="font-medium text-black">Test Case {detail.testCase}</h3>
                   <span className={`px-2 py-1 rounded text-sm ${
                     detail.passed 
                       ? 'bg-green-200 text-green-800' 
