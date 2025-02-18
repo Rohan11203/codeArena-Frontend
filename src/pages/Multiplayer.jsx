@@ -54,7 +54,7 @@ export default function ClashOfCode() {
   };
 
   return (
-    <div className="h-full bg-black text-white font-sans">
+    <div className="h-full bg-[#0f0a19] text-white font-sans">
       {/* Header */}
       <div className="relative pt-4">
        <Navbar />

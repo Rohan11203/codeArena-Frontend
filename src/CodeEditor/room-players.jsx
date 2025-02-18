@@ -14,7 +14,7 @@ export default function PlayersInRoom(){
               className="flex items-center justify-between p-4 w-64 rounded-lg bg-yellow-400"
             >
               <div className="flex items-center space-x-4">
-                <div className="w-10 h-10 rounded-full text-black border-4 flex items-center justify-center">
+                <div className="w-10 h-8 rounded-full text-black border-4 flex items-center justify-center">
                   <User size={20} />
                 </div>
                 <span className="font-medium text-black">{user}</span>

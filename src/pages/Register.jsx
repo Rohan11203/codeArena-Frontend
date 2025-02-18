@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { onRegistrtaion } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -10,6 +11,8 @@ export const Register = () => {
 
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+
+  const navigate = useNavigate();
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -23,6 +26,7 @@ export const Register = () => {
       setError("");
       console.log(data.message);
       setSuccess(data.message);
+      navigate("/login");
       setValues({ name: "", email: "", password: "" });
     } catch (error) {
       console.log(error.response.data.Error);
@@ -31,8 +35,8 @@ export const Register = () => {
     }
   };
   return (
-    <div className="h-screen flex justify-center items-center px-4">
-      <div className="rounded-2xl p-10 border-2 w-full max-w-md">
+    <div className="h-screen flex justify-center items-center px-4 bg-[#1A1A1A] ">
+      <div className="rounded-2xl p-10 border-2 w-full max-w-md text-white">
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-semibold mb-4">Create an Account</h2>
           <p className="font-light mb-6">
@@ -50,7 +54,7 @@ export const Register = () => {
               id="name"
               name="name"
               value={values.name}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your name"
               required
             />
@@ -64,7 +68,7 @@ export const Register = () => {
               id="email"
               name="email"
               value={values.email}
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
               placeholder="test@gmail.com"
               required
             />
@@ -78,7 +82,7 @@ export const Register = () => {
               value={values.password}
               id="password"
               name="password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
+              className="w-full text-black px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500"
               placeholder="Enter your password"
               required
             />
@@ -92,7 +96,7 @@ export const Register = () => {
           )}
 
           <button
-            className="w-full bg-[#cef241] font-medium py-2 px-4 rounded-md hover:bg-white hover:border transition-all"
+            className="w-full text-black bg-[#cef241] font-medium py-2 px-4 rounded-md hover:bg-yellow-200 hover:border transition-all"
             type="submit"
           >
             Submit

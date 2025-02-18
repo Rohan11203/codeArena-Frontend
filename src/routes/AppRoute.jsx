@@ -10,6 +10,7 @@ import WaitingRoom from '../components/WaitingRoom'
 import FlexBoxArena from '../components/singlePlayerGames/FlexBoxArena'
 import LandingPage from '../pages/LandingPage'
 import GridBoxArena from '../components/singlePlayerGames/GridBoxArena'
+import Leaderboard from '../pages/LeaderBoard'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -33,6 +34,8 @@ export const AppRoute = () => {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path='/leaderboard' element={<Leaderboard />} />
+
 
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
@@ -47,7 +50,6 @@ export const AppRoute = () => {
       <Route element={<RestrictedRoutes />}>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
       </Route>
     </Routes>
     </BrowserRouter>
