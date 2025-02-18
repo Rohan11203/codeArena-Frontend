@@ -1,30 +1,30 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../ContextAPi/store/ContextProvide";
-import { updateInfo } from "../../api/auth";
+import { useStore } from "../ContextAPi/store/ContextProvide";
+import { updateInfo } from "../api/auth";
 import { Grid, Play, Star, Info, CheckCircle2 } from 'lucide-react';
-import { Card, CardContent } from '../ui/Card';
-import { Button } from '../ui/ShadButton';
-import { Navbar } from "../Navbar";
+import { Card, CardContent } from '../components/ui/Card';
+import { Button } from '../components/ui/ShadButton';
+import { Navbar } from "../components/Navbar";
 
 const levels = [
   {
     level: 1,
     description: "Place the item in the center using ",
-    initialCSS: { display: "grid" },
+    initialCSS: { display: "grid"   },
     targetCSS: { placeItems: "center" },
     hints: "Use 'place-items' with 'center'.",
   },
   {
     level: 2,
     description: "Align items to the start using ",
-    initialCSS: { display: "grid" },
+    initialCSS: { display: "grid", alignItems: "end" },
     targetCSS: { alignItems: "start" },
     hints: "Use 'align-items' with 'start'.",
   },
   {
     level: 3,
-    description: "Distribute items evenly using ",
-    initialCSS: { display: "grid" },
+    description: "Distribute items evenly at start using ",
+    initialCSS: { display: "grid", justifyContent: "center" },
     targetCSS: { justifyContent: "space-between" },
     hints: "Use 'justify-content' with 'space-between'.",
   }
@@ -151,10 +151,15 @@ export default function GridBoxArena() {
 
           <Card className="bg-gray-800 border-gray-700">
             <CardContent className="p-6 pt-4">
-              <div className="bg-gray-900 rounded-lg p-4 h-[500px] relative grid" style={{ ...levels[currentLevel].initialCSS, ...boxStyle }}>
+              <div className="bg-gray-900 rounded-lg p-4 h-[500px] relative grid " style={{ ...levels[currentLevel].initialCSS,  ...boxStyle }}>
                 <div className="bg-blue-500 h-24 w-24 rounded-lg flex items-center justify-center text-white font-medium shadow-lg">
                   📦
                 </div>
+
+                <div className="bg-blue-500 h-24 w-24 rounded-lg flex items-center justify-center text-white font-medium shadow-lg">
+                  📦
+                </div>
+
               </div>
             </CardContent>
           </Card>

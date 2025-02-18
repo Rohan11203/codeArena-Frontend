@@ -4,13 +4,15 @@ import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
 import { useStore } from '../ContextAPi/store/ContextProvide'
 import PlayeGround from '../pages/PlayGround'
-import { SingleCard } from '../components/single-card-game'
+import { SingleCard } from '../components/SinglePlayersCards'
 import ClashOfCode from '../pages/Multiplayer'
 import WaitingRoom from '../components/WaitingRoom'
-import FlexBoxArena from '../components/singlePlayerGames/FlexBoxArena'
+import FlexBoxArena from '../singlePlayerGames/FlexBoxArena'
 import LandingPage from '../pages/LandingPage'
-import GridBoxArena from '../components/singlePlayerGames/GridBoxArena'
+import GridBoxArena from '../singlePlayerGames/GridBoxArena'
 import Leaderboard from '../pages/LeaderBoard'
+import CodeSimonSays from '../singlePlayerGames/CodeSimonSays'
+import QuizArena from '../singlePlayerGames/QuizArena'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -44,6 +46,8 @@ export const AppRoute = () => {
         <Route path='/multiplayer' element={<ClashOfCode  />} />
         <Route path='/froggy' element={<FlexBoxArena />} />
         <Route path='/gridBox' element={<GridBoxArena />} />
+        <Route path='/codeSimon' element={ <CodeSimonSays /> } />
+        <Route path='/quizarena' element={ <QuizArena /> } />
         <Route path='/clashofcode1/:id' element={<WaitingRoom />} />
       </Route>
 

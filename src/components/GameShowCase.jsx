@@ -16,24 +16,52 @@ import { Play, Info, Code, Users, Trophy, Zap } from "lucide-react";
 import MultiGame from "../assets/multiGame.png";
 import FlexGame from "../assets/flexGame.png";
 import GridGame from "../assets/gridGame.png";
+import CodeSimon from "../assets/codeSimon.png";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Modal } from "./ui/Modal";
 
 const GameShowcase = () => {
+  const [selectedGame, setSelectedGame] = useState(null);
+
+  const gameDetails = {
+    "Code Simon": {
+      description:
+        "Challenge your memory and coding skills with Code Simon! This innovative game combines the classic Simon memory game with programming concepts. Each round presents a sequence of code snippets that you must memorize and repeat correctly. Features include:\n\n• Progressive difficulty levels\n• Various programming language options\n• Score tracking and personal bests\n• Tutorial mode for beginners",
+    },
+    "Clash Of Code": {
+      description:
+        "Experience the thrill of competitive programming in Clash of Code! Race against other developers in real-time to solve challenging algorithmic problems. Key features include:\n\n• Real-time multiplayer competitions\n• Diverse problem categories\n• Comprehensive test cases\n• Global leaderboard system\n• Code efficiency scoring",
+    },
+    "Grid Box": {
+      description:
+        "Grid Box is a unique puzzle game that combines coding logic with spatial reasoning. Navigate through a grid-based environment while solving programming challenges. Features include:\n\n• Multiple difficulty levels\n• Algorithm optimization challenges\n• Custom level creation\n• Performance metrics tracking\n• Interactive tutorials",
+    },
+  };
+
   const games = [
     {
-      title: "Multi Game",
+      title: "Code Simon",
+      image: CodeSimon,
+      description:
+        "Memorize and repeat an increasing sequence of code snippets each round.",
+      link: "/codesimon",
+    },
+
+    {
+      title: "Clash Of Code",
       image: MultiGame,
-      description: "Engage in multiple coding challenges simultaneously.",
+      description:
+        "Compete in real-time to solve a DSA problem. Players are scored based on passing all test cases with their solution.",
+      link: "multiplayer",
     },
+
     {
-      title: "Flex Game",
-      image: FlexGame,
-      description: "Test your flexibility with adaptive coding puzzles.",
-    },
-    {
-      title: "Grid Game",
+      title: "Grid Box",
       image: GridGame,
-      description: "Master grid-based coding challenges and algorithms.",
+      description:
+        "Navigate a grid to solve coding puzzles, testing algorithms and logic to find the optimal solution.",
+      link: "/gridBox",
     },
   ];
 
@@ -110,7 +138,7 @@ const GameShowcase = () => {
                   <div className="flex justify-between p-4">
                     <Button
                       onClick={() => {
-                        navigate("/multiplayer");
+                        navigate(game.link);
                       }}
                       variant="contained"
                       startIcon={<Play size={16} />}
@@ -125,6 +153,7 @@ const GameShowcase = () => {
                       Play Now
                     </Button>
                     <Button
+                      onClick={() => setSelectedGame(game.title)}
                       variant="outlined"
                       startIcon={<Info size={16} />}
                       sx={{
@@ -145,10 +174,17 @@ const GameShowcase = () => {
           </Grid>
         </motion.div>
 
+        <Modal
+          isOpen={!!selectedGame}
+          onClose={() => setSelectedGame(null)}
+          title={selectedGame}
+          content={selectedGame ? gameDetails[selectedGame].description : ""}
+        />
+
         <Divider sx={{ my: 8, backgroundColor: "#333" }} />
 
         <motion.div
-        id="about"
+          id="about"
           whileInView={{ opacity: 1, y: 0 }}
           initial={{ opacity: 0, x: 20 }}
           transition={{ duration: 1, ease: "easeInOut" }}

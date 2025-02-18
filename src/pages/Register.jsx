@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { onRegistrtaion } from "../api/auth";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Register = () => {
   const [values, setValues] = useState({
@@ -94,6 +94,11 @@ export const Register = () => {
           {success && (
             <div className="text-green-500 text-sm font-medium">{success}</div>
           )}
+          <NavLink to="/login" className="self-center p-4">
+            <h1 className="font-medium underline cursor-pointer text-sm sm:text-base">
+              Already have an account? Login 
+            </h1>
+          </NavLink>
 
           <button
             className="w-full text-black bg-[#cef241] font-medium py-2 px-4 rounded-md hover:bg-yellow-200 hover:border transition-all"

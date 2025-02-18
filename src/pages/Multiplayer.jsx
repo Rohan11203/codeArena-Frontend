@@ -54,7 +54,7 @@ export default function ClashOfCode() {
   };
 
   return (
-    <div className="h-full bg-[#0f0a19] text-white font-sans">
+    <div className="h-full bg-[#0f0a19] font-sans">
       {/* Header */}
       <div className="relative pt-4">
        <Navbar />
@@ -66,7 +66,7 @@ export default function ClashOfCode() {
           />
         </div>
 
-        <div className="absolute bottom-4 left-4">
+        <div className="absolute bottom-4 left-4 text-white">
           <h1 className="text-3xl font-bold mb-2">CLASH OF CODE</h1>
           <p className="flex items-center">
             <Users className="mr-2" size={18} />
@@ -82,7 +82,7 @@ export default function ClashOfCode() {
       </div>
 
       {/* Navigation */}
-      <div className="flex border-b border-gray-700">
+      <div className="flex border-b border-gray-700 text-white">
         <button
           className={`px-4 py-2 font-medium ${
             activeSection === "gameInfo"
@@ -109,7 +109,7 @@ export default function ClashOfCode() {
       </div>
 
       {/* Content */}
-      <div className="p-4 flex">
+      <div className="p-4 flex text-white">
         <div className="w-2/3 pr-4">
           {activeSection === "gameInfo" && (
             <>

@@ -1,11 +1,19 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../ContextAPi/store/ContextProvide";
-import { updateInfo } from "../../api/auth";
-import { Code2, Play, ChevronLeft, ChevronRight, Star, Info, CheckCircle2 } from 'lucide-react';
-import { Card, CardContent } from '../ui/Card';
-import { Button } from '../ui/ShadButton';
+import { useStore } from "../ContextAPi/store/ContextProvide";
+import { updateInfo } from "../api/auth";
+import {
+  Code2,
+  Play,
+  ChevronLeft,
+  ChevronRight,
+  Star,
+  Info,
+  CheckCircle2,
+} from "lucide-react";
+import { Card, CardContent } from "../components/ui/Card";
+import { Button } from "../components/ui/ShadButton";
 import { toastStore } from "@chakra-ui/react";
-import { Navbar } from "../Navbar";
+import { Navbar } from "../components/Navbar";
 
 const levels = [
   {
@@ -25,70 +33,71 @@ const levels = [
   {
     level: 3,
     description: "Move the frog to the left using ",
-    initialCSS: { display: "flex" },
+    initialCSS: { display: "flex", justifyContent: "flex-end" },
     targetCSS: { justifyContent: "flex-start" },
     hints: "Use 'justify-content' with 'flex-start'.",
   },
   {
     level: 4,
     description: "Move the frog to the left and right using ",
-    initialCSS: { display: "flex", justifyContent: "space-between" },
+    initialCSS: { display: "flex", justifyContent: "flex-start",},
     targetCSS: { justifyContent: "space-between" },
     hints: "Use 'justify-content' with'space-between'.",
   },
   {
     level: 5,
-    description: "Move the frog to the top using ",
+    description: "Move the frog to the top right using   ",
     initialCSS: { display: "flex", flexDirection: "column-reverse" },
-    targetCSS: { flexDirection: "column-reverse" },
+    targetCSS: { flexDirection: "row-reverse" },
     hints: "Use 'flex-direction' with 'column-reverse'.",
-  }
-
+  },
 ];
 
 const FlexProperties = [
-  { name: 'justify-content: flex-start', description: 'Align items at the start' },
-  { name: 'justify-content: flex-end', description: 'Align items at the end' },
-  { name: 'justify-content: center', description: 'Center align items' },
-  { name: 'justify-content: space-between', description: 'Space items evenly' },
+  {
+    name: "justify-content: flex-start",
+    description: "Align items at the start",
+  },
+  { name: "justify-content: flex-end", description: "Align items at the end" },
+  { name: "justify-content: center", description: "Center align items" },
+  { name: "justify-content: space-between", description: "Space items evenly" },
 ];
 
 export default function FlexBoxArena() {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [userCSS, setUserCSS] = useState("");
   const [showHint, setShowHint] = useState(false);
-  const { xp, setXp,fetchInfo } = useStore();
-  const [frogXp , setFrogXp] = useState(0);
+  const { xp, setXp, fetchInfo } = useStore();
+  const [frogXp, setFrogXp] = useState(0);
 
-  useEffect(() =>{
-    fetchInfo()
-  },[])
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   const IncreaseXp = async () => {
     try {
       setFrogXp((prevFrogXp) => {
         const updatedFrogXp = prevFrogXp + 5;
-  
+
         setXp((prevXp = 0) => {
           const newXp = (xp || 0) + updatedFrogXp;
           const updateData = { totalScore: newXp };
-  
+
           console.log(updateData);
           console.log(updatedFrogXp, prevXp);
-  
+
           // Call API after updating XP
           updateInfo(updateData).catch(console.error);
-  
+
           return newXp;
         });
-  
+
         return updatedFrogXp;
       });
     } catch (error) {
       console.log(error);
     }
   };
-  
 
   const parseCSS = (cssString) => {
     const styleObj = {};
@@ -115,7 +124,7 @@ export default function FlexBoxArena() {
     const isCorrect = Object.keys(targetCSS).every(
       (key) => boxStyle[key] === targetCSS[key]
     );
-    
+
     if (isCorrect) {
       IncreaseXp();
       setCurrentLevel(currentLevel + 1);
@@ -126,9 +135,7 @@ export default function FlexBoxArena() {
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] p-4">
-      {
-        console.log(xp)
-      }
+      {console.log(xp)}
       <Navbar />
       <div className="max-w-7xl mx-auto">
         {/* Header */}
@@ -156,19 +163,28 @@ export default function FlexBoxArena() {
               <CardContent className="p-6">
                 <h2 className="text-xl text-gray-200 my-4">
                   {levels[currentLevel].description}
-                  <span className="text-green-400 ">justify-content</span>
+                  { 
+                    levels[currentLevel].level === 5 ? <span className="text-green-400 font-medium">flex-direction</span> : <span className="text-green-400 font-medium">Justify-content</span>
+                    
+                  }
                 </h2>
-                
+
                 <div className="space-y-4">
-                  <h3 className="text-gray-300 font-medium">Available Properties:</h3>
+                  <h3 className="text-gray-300 font-medium">
+                    Available Properties:
+                  </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                     {FlexProperties.map((prop) => (
                       <div
                         key={prop.name}
                         className="bg-gray-700 p-3 rounded-lg"
                       >
-                        <code className="text-green-400 text-sm">{prop.name}</code>
-                        <p className="text-gray-400 text-xs mt-1">{prop.description}</p>
+                        <code className="text-green-400 text-sm">
+                          {prop.name}
+                        </code>
+                        <p className="text-gray-400 text-xs mt-1">
+                          {prop.description}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -218,6 +234,7 @@ export default function FlexBoxArena() {
             <CardContent className="p-6 pt-4">
               <div className="bg-gray-900 rounded-lg p-4 h-[500px] relative">
                 <div
+                className="gap-2"
                   style={{
                     ...levels[currentLevel].initialCSS,
                     height: "100%",
@@ -226,6 +243,9 @@ export default function FlexBoxArena() {
                     ...boxStyle,
                   }}
                 >
+                  <div className="bg-green-500 h-24 w-24 rounded-lg flex items-center justify-center text-white font-medium shadow-lg transition-all duration-300">
+                    🐸
+                  </div>
                   <div className="bg-green-500 h-24 w-24 rounded-lg flex items-center justify-center text-white font-medium shadow-lg transition-all duration-300">
                     🐸
                   </div>
