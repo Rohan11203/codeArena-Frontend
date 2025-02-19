@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { updateInfo } from "../api/auth";
 import { Navbar } from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 const codeRounds = [
   `console.log("Start");`,
@@ -22,6 +23,7 @@ export default function CodeSimonSays() {
   const [showCode, setShowCode] = useState(true);
   const { xp, setXp, fetchInfo } = useStore();
   const [points, setPoints] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchInfo();
@@ -59,12 +61,18 @@ export default function CodeSimonSays() {
     }
   };
 
+  const CollectPoints = () => {
+    IncreaseXp();
+    navigate("/dashboard")
+    
+  }
+
   const restartGame = () => {
+    IncreaseXp();
     setRound(0);
     setUserInput("");
     setGameOver(false);
     setShowCode(true);
-    IncreaseXp();
   };
 
   return (
@@ -93,6 +101,13 @@ export default function CodeSimonSays() {
             >
               🔄 Restart
             </button>
+
+            <button
+              onClick={CollectPoints}
+              className="px-4 py-2 mx-4 bg-green-600 text-white rounded-md hover:bg-green-500"
+            >
+              Collect Points
+            </button>
           </div>
         ) : (
           <>
@@ -100,7 +115,7 @@ export default function CodeSimonSays() {
               <h3 className="text-lg font-semibold">Round {round + 1}</h3>
               {showCode ? (
                 <pre
-                  // onCopy={(e) => e.preventDefault()} // Prevent copying
+                  onCopy={(e) => e.preventDefault()} // Prevent copying
                   className="bg-gray-700 p-2 rounded-md text-green-400"
                 >
                   {codeRounds.slice(0, round + 1).join("\n")}
@@ -117,8 +132,8 @@ export default function CodeSimonSays() {
               placeholder="Repeat the code exactly..."
               value={userInput}
               onChange={handleInputChange}
-              //   onPaste={(e) => e.preventDefault()} // Prevent pasting
-              //   onCopy={(e) => e.preventDefault()} // Prevent copying
+                onPaste={(e) => e.preventDefault()} // Prevent pasting
+                onCopy={(e) => e.preventDefault()} // Prevent copying
               className="w-full max-w-md bg-gray-800 text-white p-2 rounded-md border border-gray-600 focus:outline-none focus:ring focus:ring-blue-500"
             />
 

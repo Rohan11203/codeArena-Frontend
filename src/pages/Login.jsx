@@ -22,8 +22,10 @@ export const Login = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await onLogin(values);
+      const res = await onLogin(values);
 
+      console.log(res);
+      console.log("Result", res.data.token)
       setIsAuth(true);
       localStorage.setItem("isAuth", "true");
       navigate("/dashboard");

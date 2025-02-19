@@ -4,7 +4,6 @@ import PlayerStats from "../components/PlayerStats";
 import FlowDiagram from "../components/FlowDiagram";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { updateInfo } from "../api/auth";
-import { Button } from "../components/ui/Button";
 
 export const Dashboard = () => {
   const { fetchInfo,xp,setLevel } = useStore();

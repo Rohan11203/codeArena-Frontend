@@ -1,9 +1,4 @@
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  useState
-} from "react";
+import React, { createContext, useContext, useEffect, useRef, useState } from "react";
 import { getProfile } from "../../api/auth";
 
 const MyContext = createContext(null);
@@ -25,15 +20,21 @@ export const StoreProvider = ({ children }) => {
   const fetchInfo = async () => {
     try {
       const { data } = await getProfile();
-      setXp(data.user.totalScore);
-      setName(data.user.name);
-      setLevel(data.user.level);
-      setAchievments(data.user.achivements);
+      setXp(data?.user?.totalScore || 0);
+      setName(data?.user?.name || "");
+      setLevel(data?.user?.level || 1);
+      setAchievments(data?.user?.achievements || []);
+      setIsAuth(true); // Mark user as authenticated
     } catch (error) {
-      console.log(error.response.data.message);
+      console.error("Auth error:", error.response?.data?.message || error.message);
+      setIsAuth(false); // Mark user as unauthenticated
     }
   };
 
+  useEffect(() => {
+    fetchInfo(); // Runs once when StoreProvider mounts
+  }, []);
+  
   return (
     <MyContext.Provider
       value={{
@@ -54,7 +55,7 @@ export const StoreProvider = ({ children }) => {
         setProblemDetails,
         editorRef,
         setLanguage,
-        language
+        language,
       }}
     >
       {children}
