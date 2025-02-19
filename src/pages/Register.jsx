@@ -29,8 +29,8 @@ export const Register = () => {
       navigate("/login");
       setValues({ name: "", email: "", password: "" });
     } catch (error) {
-      console.log(error.response.data.Error);
-      setError(error.response.data.Error[0]);
+      console.log(error.response.data.message);
+      setError(error.response.data.message);
       setSuccess("");
     }
   };
@@ -40,7 +40,7 @@ export const Register = () => {
         <div className="flex flex-col items-center text-center">
           <h2 className="text-2xl font-semibold mb-4">Create an Account</h2>
           <p className="font-light mb-6">
-            Join CodeArena and challenge the best! 🚀 Sign up now to compete in
+            Join CodeArena and challenge the best! 🚀 Register now to compete in
             real-time coding.
           </p>
         </div>
@@ -94,6 +94,8 @@ export const Register = () => {
           {success && (
             <div className="text-green-500 text-sm font-medium">{success}</div>
           )}
+
+          
           <NavLink to="/login" className="self-center p-4">
             <h1 className="font-medium underline cursor-pointer text-sm sm:text-base">
               Already have an account? Login 

@@ -12,6 +12,14 @@ export async function onLogin(loginData) {
   return await axios.post("http://localhost:3000/api/user/login", loginData);
 }
 
+export async function OnGoogle() {
+  try {
+    window.location.href = "http://localhost:3000/api/user/auth/google";
+  } catch (error) {
+    console.error("Google Login Error : ", error) 
+  }
+}
+
 export async function onLogout() {
   return await axios.get("http://localhost:3000/api/user/logout");
 }

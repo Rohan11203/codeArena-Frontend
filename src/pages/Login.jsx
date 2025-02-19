@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { onLogin } from "../api/auth";
+import { OnGoogle, onLogin } from "../api/auth";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 import { NavLink, useNavigate } from "react-router-dom";
 import SignInImage from "../assets/signinImage.png";
@@ -49,7 +49,7 @@ export const Login = () => {
               
               <div className="w-full max-w-md p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-800">
                 <Goal />
-                <span>Continue with Google</span>
+                <button onClick={OnGoogle}>Continue with Google</button>
               </div>
             </div>
 
