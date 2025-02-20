@@ -10,6 +10,7 @@ export const StoreProvider = ({ children }) => {
   const [level, setLevel] = useState(null);
   const [achievments, setAchievments] = useState(null);
   const [name, setName] = useState("");
+  const [Avtar, setAvtar] = useState("");
   const roomId = 123;
   const wsRef = useRef(null);
   const [users, setUsers] = useState([]);
@@ -24,6 +25,7 @@ export const StoreProvider = ({ children }) => {
       setName(data?.user?.name || "");
       setLevel(data?.user?.level || 1);
       setAchievments(data?.user?.achievements || []);
+      setAvtar(data.user.Avtar); 
       setIsAuth(true); // Mark user as authenticated
     } catch (error) {
       console.error("Auth error:", error.response?.data?.message || error.message);
@@ -56,6 +58,7 @@ export const StoreProvider = ({ children }) => {
         editorRef,
         setLanguage,
         language,
+        Avtar
       }}
     >
       {children}

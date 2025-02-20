@@ -4,9 +4,10 @@ import { motion } from "framer-motion"
 import { Button } from "./ui/Button";
 
 export default function PlayerStats() {
-  const { xp, name,level,setLevel,achievments } = useStore();
+  const { xp, name,level,setLevel,achievments, Avtar } = useStore();
   const experienceXp  = xp / 10;
   const levelProgress = level * 10;
+
   return (
     <motion.div 
     initial={{ opacity:0, x:-50 }}
@@ -16,8 +17,11 @@ export default function PlayerStats() {
       <div className="card-body items-center text-center">
         {/* Avatar Section */}
         <div className="avatar placeholder">
-          <div className="bg-black rounded-full w-24 ring ring-[#cef241] ring-offset-[#cef241] ring-offset-2">
-            <span className="text-3xl font-medium text-white">{name[0]}</span>
+          <div className=" rounded-full w-24 ring ring-[#cef241] ring-offset-[#cef241] ring-offset-2">
+            <img src={Avtar}/>
+            { console.log("This is avtar",Avtar)}
+            { console.log("This is avtar",name)}
+            {/* <span className="text-3xl font-medium text-white">{name[0]}</span> */}
           </div>
         </div>
         

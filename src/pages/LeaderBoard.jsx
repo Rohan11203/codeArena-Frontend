@@ -94,7 +94,7 @@ const Leaderboard = () => {
                     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                       {/* Placeholder Avatar */}
                       <Avatar
-                        src={`https://i.pravatar.cc/150?img=${index + 1}`}
+                        src={player.Avtar}
                         alt={player.name}
                       />
                       {player.name}
