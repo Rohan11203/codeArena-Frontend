@@ -1,90 +1,98 @@
-import TestCases from "../../CodeEditor/TestCases";
-
-export const PROBLEM_SNIPPETS = {
-  'Two Sum': {
+export const TOW_SUM_SNIPPETS = {
+  "Two Sum": {
     javascript: `function twoSum(nums, target) {
-      const map = new Map(); // Stores the difference (target - current number) and its index
+      const map = new Map(); // Stores the number and its index
 
       for (let i = 0; i < nums.length; i++) {
           const complement = target - nums[i];
 
           // Check if the complement is already in the map
           if (map.has(complement)) {
-              return [map.get(complement), i];
+              return [map.get(complement), i]; // Return correct indices
           }
 
           // Store the current number and its index in the map
           map.set(nums[i], i);
       }
 
-      // If no solution is found (although the problem guarantees a solution)
-      return [];
+      return []; // If no solution is found
     }
-    // Example Usage:
-    console.log(twoSum([2, 7, 11, 15], 9)); // [0, 1]
-    console.log(twoSum([3, 2, 4], 6));      // [1, 2]
-    console.log(twoSum([3, 3], 6));         // [0, 1]
-    `,
-  },
-  'Reverse a String': {
-    javascript: `function reverseString(str) {
-      return str.split('').reverse().join('');
-    }
-    // Example Usage:
-    console.log(reverseString("hello")); // "olleh"
-    console.log(reverseString("world")); // "dlrow"
-    `,
-  },
-  'Merge Strings Alternately': {
-    javascript: `function mergeAlternately(word1, word2) {
-      let result = '';
-      let i = 0, j = 0;
-      while (i < word1.length || j < word2.length) {
-          if (i < word1.length) result += word1[i++];
-          if (j < word2.length) result += word2[j++];
-      }
-      return result;
-    }
-    // Example Usage:
-    console.log(mergeAlternately("abc", "xyz")); // "axbycz"
-    `,
-  },
-  'Palindrome Number': {
-    javascript: `function isPalindrome(num) {
-      const reversedNum = parseInt(num.toString().split('').reverse().join(''), 10);
-      return num === reversedNum;
-    }
-    // Example Usage:
-    console.log(isPalindrome(121)); // true
-    console.log(isPalindrome(-121)); // false
-    console.log(isPalindrome(10)); // false
-    `,
-  },
-  'Valid Parentheses': {
-    javascript: `function isValid(s) {
-      const stack = [];
-      const mapping = {
-          '(': ')',
-          '[': ']',
-          '{': '}',
-      };
 
-      for (let char of s) {
-          if (mapping[char]) {
-              stack.push(char);
-          } else {
-              const top = stack.pop();
-              if (mapping[top] !== char) {
-                  return false;
-              }
-          }
-      }
-      return stack.length === 0;
-    }
     // Example Usage:
-    console.log(isValid("()")); // true
-    console.log(isValid("()[]{}")); // true
-    console.log(isValid("(]")); // false
+    console.log(twoSum([1, 5, 3, 7], 8)); // [0, 3]
+    console.log(twoSum([3, 3], 6));       // [0, 1]
+    `,
+
+    typescript: `function twoSum(nums: number[], target: number): number[] {
+    const numIndex: Record<number, number> = {}; // Object to store number and its index
+
+    for (let i = 0; i < nums.length; i++) {
+        const complement: number = target - nums[i];
+
+        // Check if the complement exists in the object
+        if (complement in numIndex) {
+            return [numIndex[complement], i]; // Return correct indices
+        }
+
+        // Store the current number's index
+        numIndex[nums[i]] = i;
+    }
+
+    return []; // If no solution is found
+}
+
+// Example Usage:
+console.log(twoSum([1, 5, 3, 7], 8)); // [0, 3]
+console.log(twoSum([3, 3], 6));       // [0, 1]
+
+    `,
+
+    java: `import java.util.HashMap;
+    import java.util.Map;
+
+    public class TwoSum {
+        public static int[] twoSum(int[] nums, int target) {
+            Map<Integer, Integer> map = new HashMap<>();
+
+            for (int i = 0; i < nums.length; i++) {
+                int complement = target - nums[i];
+
+                if (map.containsKey(complement)) {
+                    return new int[]{map.get(complement), i};
+                }
+
+                map.put(nums[i], i);
+            }
+
+            return new int[]{}; // If no solution is found
+        }
+
+        public static void main(String[] args) {
+            int[] result1 = twoSum(new int[]{1, 5, 3, 7}, 8);
+            int[] result2 = twoSum(new int[]{3, 3}, 6);
+
+            System.out.println(java.util.Arrays.toString(result1)); // [0, 3]
+            System.out.println(java.util.Arrays.toString(result2)); // [0, 1]
+        }
+    }
+    `,
+
+    python: `def two_sum(nums, target):
+    num_map = {}  # Stores the number and its index
+
+    for i, num in enumerate(nums):
+        complement = target - num
+
+        if complement in num_map:
+            return [num_map[complement], i]
+
+        num_map[num] = i
+
+    return []  # If no solution is found
+
+# Example Usage:
+print(two_sum([1, 5, 3, 7], 8))  # [0, 3]
+print(two_sum([3, 3], 6))        # [0, 1]
     `,
   },
 };

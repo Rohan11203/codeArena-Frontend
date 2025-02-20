@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { getProblem, getProblemById } from "../api/auth";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 
-const ProblemDetails = ({ title, description, difficulty, examples }) => {
+const ProblemDetails = ({ title, description, difficulty, examples, constraints }) => {
+
   return (
-    <div>
+    <div className="">
       <div>
         <Text fontSize="2xl">{title}</Text>
         <Text>{description}</Text>
@@ -17,6 +18,7 @@ const ProblemDetails = ({ title, description, difficulty, examples }) => {
       </div>
 
       <div className=" p-2 rounded-lg my-4">
+        <h1 className="font-bold p-1">Examples</h1>
         {examples.map((example, index) => (
           <div key={example._id} style={{ marginBottom: "20px" }}>
             <div className="bg-[#18181B] p-4 border rounded-lg">
@@ -46,6 +48,13 @@ const ProblemDetails = ({ title, description, difficulty, examples }) => {
           </div>
         ))}
       </div>
+
+      
+      <div className="bg-[#18181B] p-4 border rounded-lg">
+      <h1 className="font-bold pb-2">Constrains</h1>
+        { constraints.map((constraint,index) => (
+          <p className="bg-gray-600 m-2 rounded-md p-1">{constraint}</p>
+        )) }</div>
     </div>
   );
 };

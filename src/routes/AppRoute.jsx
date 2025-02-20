@@ -4,7 +4,7 @@ import { Register } from '../pages/Register'
 import { Dashboard } from '../pages/Dashboard'
 import { useStore } from '../ContextAPi/store/ContextProvide'
 import PlayeGround from '../pages/PlayGround'
-import { SingleCard } from '../components/SinglePlayersCards'
+import { SinglePlayersCard } from '../pages/SinglePlayersCards'
 import ClashOfCode from '../pages/Multiplayer'
 import WaitingRoom from '../components/WaitingRoom'
 import FlexBoxArena from '../singlePlayerGames/FlexBoxArena'
@@ -42,9 +42,9 @@ export const AppRoute = () => {
       <Route element={<PrivateRoutes />}>
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/clashofcode/:id' element={<PlayeGround />} />
-        <Route path='/singleplayer' element={<SingleCard />} />
+        <Route path='/singleplayer' element={<SinglePlayersCard />} />
         <Route path='/multiplayer' element={<ClashOfCode  />} />
-        <Route path='/froggy' element={<FlexBoxArena />} />
+        <Route path='/flexBox' element={<FlexBoxArena />} />
         <Route path='/gridBox' element={<GridBoxArena />} />
         <Route path='/codeSimon' element={ <CodeSimonSays /> } />
         <Route path='/quizarena' element={ <QuizArena /> } />

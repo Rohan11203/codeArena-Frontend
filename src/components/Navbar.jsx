@@ -22,7 +22,7 @@ export const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeInOut" }}
       className="sm:max-w-2xl max-w-4xl mx-auto"
     >
-      <div className="bg-[#111111] flex justify-between items-center border p-3 rounded-full">
+      <div className="bg-[#111111] flex  justify-between items-center border p-3 rounded-full">
         <NavLink
           to={"/"}
           className="text-white text-xl flex gap-2 items-center"

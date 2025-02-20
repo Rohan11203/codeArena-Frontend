@@ -34,6 +34,12 @@ export const Login = () => {
       setError(error.response.data.message);
     }
   };
+
+  const OnGoogleLogin = () => {
+    setIsAuth(true);
+    localStorage.setItem("isAuth", "true");
+     OnGoogle();
+  }
   return (
     <div className="">
       <div className="h-screen bg-[#1A1A1A] text-white w-full flex justify-center  md:flex-row">
@@ -49,7 +55,7 @@ export const Login = () => {
               
               <div className="w-full max-w-md p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-800">
                 <Goal />
-                <button onClick={OnGoogle}>Continue with Google</button>
+                <button onClick={OnGoogleLogin}>Continue with Google</button>
               </div>
             </div>
 
