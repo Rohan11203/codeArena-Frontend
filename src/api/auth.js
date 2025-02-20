@@ -43,3 +43,7 @@ export async function getProblem() {
 export async function getProblemById(id) {
   return await axios.get(`http://localhost:3000/api/problem/${id}`);
 }
+
+export async function getLeaderBoardData() {
+  return await axios.get(`http://localhost:3000/api/leaderboard`);
+}

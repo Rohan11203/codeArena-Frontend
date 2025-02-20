@@ -12,69 +12,8 @@ import {
 } from "@mui/material";
 import { Trophy, Medal, Award } from "lucide-react";
 import { Navbar } from "../components/Navbar";
-
-const players = [
-  {
-    rank: 1,
-    username: "CodeMaster",
-    score: 9850,
-    avatar: "https://i.pravatar.cc/150?img=1",
-  },
-  {
-    rank: 2,
-    username: "AlgoQueen",
-    score: 9720,
-    avatar: "https://i.pravatar.cc/150?img=5",
-  },
-  {
-    rank: 3,
-    username: "ByteWizard",
-    score: 9680,
-    avatar: "https://i.pravatar.cc/150?img=3",
-  },
-  {
-    rank: 4,
-    username: "SyntaxSage",
-    score: 9550,
-    avatar: "https://i.pravatar.cc/150?img=4",
-  },
-  {
-    rank: 5,
-    username: "LogicLord",
-    score: 9490,
-    avatar: "https://i.pravatar.cc/150?img=2",
-  },
-  {
-    rank: 6,
-    username: "DataDiva",
-    score: 9420,
-    avatar: "https://i.pravatar.cc/150?img=6",
-  },
-  {
-    rank: 7,
-    username: "BugSlayer",
-    score: 9380,
-    avatar: "https://i.pravatar.cc/150?img=7",
-  },
-  {
-    rank: 8,
-    username: "DevDynamo",
-    score: 9340,
-    avatar: "https://i.pravatar.cc/150?img=8",
-  },
-  {
-    rank: 9,
-    username: "CipherChamp",
-    score: 9290,
-    avatar: "https://i.pravatar.cc/150?img=9",
-  },
-  {
-    rank: 10,
-    username: "QueryNinja",
-    score: 9240,
-    avatar: "https://i.pravatar.cc/150?img=10",
-  },
-];
+import { useEffect, useState } from "react";
+import { getLeaderBoardData } from "../api/auth";
 
 const getRankIcon = (rank) => {
   switch (rank) {
@@ -90,10 +29,25 @@ const getRankIcon = (rank) => {
 };
 
 const Leaderboard = () => {
+  const [players1, setPlayers] = useState([]);
+
+  async function fetchLeaderBoardData() {
+    const res = await getLeaderBoardData();
+    setPlayers(res.data.Users);
+  }
+
+  useEffect(() => {
+    fetchLeaderBoardData();
+  }, []);
+
+
+  // Sort players based on totalScore in descending order and assign rank
+  const sortedPlayers = [...players1].sort((a, b) => b.totalScore - a.totalScore);
+
   return (
     <div className="bg-[#0f0f0f] p-8">
-    <Navbar />
-      <Box sx={{ bgcolor: "#0f0f0f", p: 4, borderRadius: 2,  }}>
+      <Navbar />
+      <Box sx={{ bgcolor: "#0f0f0f", p: 4, borderRadius: 2 }}>
         <Typography
           variant="h4"
           component="h2"
@@ -105,7 +59,7 @@ const Leaderboard = () => {
         </Typography>
         <TableContainer
           component={Paper}
-          sx={{ bgcolor: "#1a1a1a", color: "white", p:4,  }}
+          sx={{ bgcolor: "#1a1a1a", color: "white", p: 4 }}
         >
           <Table sx={{ minWidth: 650 }} aria-label="leaderboard table">
             <TableHead>
@@ -125,25 +79,29 @@ const Leaderboard = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {players.map((player) => (
+              {sortedPlayers.map((player, index) => (
                 <TableRow
-                  key={player.rank}
+                  key={index} // Use index as a key if there's no unique id
                   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                 >
                   <TableCell component="th" scope="row" sx={{ color: "white" }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-                      {getRankIcon(player.rank)}
-                      {player.rank}
+                      {getRankIcon(index + 1)} {/* Rank based on sorted position */}
+                      {index + 1}
                     </Box>
                   </TableCell>
                   <TableCell sx={{ color: "white" }}>
                     <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-                      <Avatar src={player.avatar} alt={player.username} />
-                      {player.username}
+                      {/* Placeholder Avatar */}
+                      <Avatar
+                        src={`https://i.pravatar.cc/150?img=${index + 1}`}
+                        alt={player.name}
+                      />
+                      {player.name}
                     </Box>
                   </TableCell>
                   <TableCell align="right" sx={{ color: "white" }}>
-                    {player.score}
+                    {player.totalScore}
                   </TableCell>
                 </TableRow>
               ))}
