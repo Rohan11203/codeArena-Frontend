@@ -31,19 +31,19 @@ export function SinglePlayersCard() {
           />
         </NavLink>
 
-        <NavLink to="/flexBox" className="relative mt-10  h-80 w-full">
+        <NavLink to="/quizarena" className="relative mt-10  h-80 w-full">
           <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
-            <div className="bg-green-600 border-1 border-blue-800 p-4 rounded-2xl">
+            <div className="bg-purple-600 border-1 border-purple-800 p-4 rounded-2xl">
               <div className="flex gap-4 items-center">
                 <Layers className="w-6 h-6" />
-                <h2 className="font-bold text-2xl">Flex Box Arena</h2>
+                <h2 className="font-bold text-2xl">Quiz Arena</h2>
               </div>
               <h2 className="font-light "> Play and Earn Points</h2>
             </div>
           </div>
           <img
             className="w-full h-full rounded-xl object-cover"
-            src={FlexBoxImg}
+            src={QuizArenaImg}
             alt="cardImage"
           />
         </NavLink>
@@ -75,9 +75,9 @@ export function SinglePlayersCard() {
             />
           </NavLink>
 
-          <NavLink to={"/quizarena"} className="relative mt-10 h-60 w-96">
+          <NavLink to={"/flexbox"} className="relative mt-10 h-60 w-96">
             <div className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 text-white text-center">
-              <div className="bg-purple-600 border-1 border-purple-800 p-2 rounded-xl">
+              <div className="bg-green-600 border-1 border-green-800 p-2 rounded-xl">
                 <div className="flex gap-4 items-center">
                   <Layers className="w-6 h-6" />
                   <h2 className="font-bold text-xl">Quiz  Arena</h2>
@@ -87,7 +87,7 @@ export function SinglePlayersCard() {
             </div>
             <img
               className="w-full h-full rounded-xl object-cover"
-              src={QuizArenaImg}
+              src={FlexBoxImg}
               alt="cardImage"
             />
           </NavLink>

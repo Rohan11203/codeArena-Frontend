@@ -31,8 +31,8 @@ export default function CodeSimonSays() {
 
   useEffect(() => {
     setShowCode(true);
-    setTimeout(() => setShowCode(false), 8000); // Show code for 4 seconds
-    setUserInput(""); // Clear input for the new round
+    setTimeout(() => setShowCode(false), 5000); 
+    setUserInput(""); 
   }, [round]);
 
   const handleInputChange = (e) => {

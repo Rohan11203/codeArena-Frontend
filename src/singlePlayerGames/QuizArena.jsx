@@ -11,40 +11,12 @@ import {
 import { Navbar } from "../components/Navbar";
 import { updateInfo } from "../api/auth";
 import { useStore } from "../ContextAPi/store/ContextProvide";
+import { jsQuizQuestions } from "./Levels/quizArenaLevels";
+import { useNavigate } from "react-router-dom";
 
 const QUESTION_TIME_LIMIT = 30; // Time limit in seconds per question
 
-const jsQuizQuestions = [
-  {
-    question:
-      "What will be the output of the following code?\n\nlet a = 10;\nconst a = 10;\nconsole.log(a);",
-    options: [
-      { id: 1, text: "10", isCorrect: false },
-      { id: 2, text: "Error: Variable a is already declared", isCorrect: true },
-      { id: 3, text: "undefined", isCorrect: false },
-      { id: 4, text: "null", isCorrect: false },
-    ],
-  },
-  {
-    question:
-      "What will be the output of the following code?\n\nlet a = 5;\nlet b = 10;\nconsole.log(a + b);",
-    options: [
-      { id: 1, text: "15", isCorrect: true },
-      { id: 2, text: "510", isCorrect: false },
-      { id: 3, text: "NaN", isCorrect: false },
-      { id: 4, text: "undefined", isCorrect: false },
-    ],
-  },
-  {
-    question: "What does the 'let' keyword do in JavaScript?",
-    options: [
-      { id: 1, text: "Creates a constant variable", isCorrect: false },
-      { id: 2, text: "Creates a block-scoped variable", isCorrect: true },
-      { id: 3, text: "Creates a global variable", isCorrect: false },
-      { id: 4, text: "Creates a function", isCorrect: false },
-    ],
-  },
-];
+
 
 const QuizArena = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -55,7 +27,7 @@ const QuizArena = () => {
   const [totalTime, setTotalTime] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(true);
   const { xp, setXp, fetchInfo } = useStore();
-
+  const navigate = useNavigate();
   useEffect(() => {
     fetchInfo();
   }, []);
@@ -116,8 +88,12 @@ const QuizArena = () => {
 
     // Call API after updating XP
     updateInfo(updateData).catch(console.error);
-    resetQuiz()
   };
+
+  const CollectPoints = () => {
+    IncreaseXp();
+    navigate("/dashboard");
+  }
 
   const resetQuiz = () => {
     IncreaseXp();
@@ -157,7 +133,7 @@ const QuizArena = () => {
               Try Again
             </button>
             <button
-              onClick={IncreaseXp}
+              onClick={CollectPoints}
               className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center mx-auto gap-2"
             >
               <ArrowRight className="w-5 h-5" />
