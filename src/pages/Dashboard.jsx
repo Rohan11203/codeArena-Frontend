@@ -6,39 +6,35 @@ import { useStore } from "../ContextAPi/store/ContextProvide";
 import { updateInfo } from "../api/auth";
 
 export const Dashboard = () => {
-  const { fetchInfo,xp,setLevel } = useStore();
+  const { fetchInfo, xp, setLevel } = useStore();
 
-  async function updateLevel () {
-    let newLevel = Math.floor(xp/100)
-    
+  async function updateLevel() {
+    let newLevel = Math.floor(xp / 100);
+
     const updateData = {
       level: newLevel,
     };
-  await updateInfo(updateData)
-  setLevel(newLevel);
+    await updateInfo(updateData);
+    setLevel(newLevel);
   }
 
   useEffect(() => {
-    
     fetchInfo();
-  },[]);
+  }, []);
 
-  useEffect (() => {
-    try{
+  useEffect(() => {
+    try {
       updateLevel();
-    }catch(e){
+    } catch (e) {
       console.log("Error while updating Level", e);
     }
-  },[xp])
-  
+  }, [xp]);
+
   return (
     <Layout>
-      <div className="bg-black h-screen p-10 flex justify-between gap-5" >
+      <div className="bg-black h-screen p-10 flex justify-between gap-5">
         <PlayerStats />
-      <FlowDiagram />
-      {
-        console.log(xp)
-      }
+        <FlowDiagram />
       </div>
     </Layout>
   );

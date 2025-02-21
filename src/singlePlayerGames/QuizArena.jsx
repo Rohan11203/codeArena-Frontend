@@ -9,6 +9,8 @@ import {
   Clock,
 } from "lucide-react";
 import { Navbar } from "../components/Navbar";
+import { updateInfo } from "../api/auth";
+import { useStore } from "../ContextAPi/store/ContextProvide";
 
 const QUESTION_TIME_LIMIT = 30; // Time limit in seconds per question
 
@@ -52,6 +54,11 @@ const QuizArena = () => {
   const [timeLeft, setTimeLeft] = useState(QUESTION_TIME_LIMIT);
   const [totalTime, setTotalTime] = useState(0);
   const [isTimerActive, setIsTimerActive] = useState(true);
+  const { xp, setXp, fetchInfo } = useStore();
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   useEffect(() => {
     let timer;
@@ -89,7 +96,7 @@ const QuizArena = () => {
 
     setTimeout(() => {
       if (isCorrect) {
-        setScore(score + 1);
+        setScore(score + 5);
       }
 
       if (currentQuestion < jsQuizQuestions.length - 1) {
@@ -103,7 +110,17 @@ const QuizArena = () => {
     }, 1000);
   };
 
+  const IncreaseXp = async () => {
+    const newXp = (xp || 0) + score;
+    const updateData = { totalScore: newXp };
+
+    // Call API after updating XP
+    updateInfo(updateData).catch(console.error);
+    resetQuiz()
+  };
+
   const resetQuiz = () => {
+    IncreaseXp();
     setCurrentQuestion(0);
     setScore(0);
     setShowResult(false);
@@ -131,13 +148,22 @@ const QuizArena = () => {
           <p className="text-lg mb-4 text-gray-400">
             Total Time: {formatTime(totalTime)}
           </p>
-          <button
-            onClick={resetQuiz}
-            className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center mx-auto gap-2"
-          >
-            <ArrowRight className="w-5 h-5" />
-            Try Again
-          </button>
+          <div className="flex gap-2">
+            <button
+              onClick={resetQuiz}
+              className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center mx-auto gap-2"
+            >
+              <ArrowRight className="w-5 h-5" />
+              Try Again
+            </button>
+            <button
+              onClick={IncreaseXp}
+              className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center mx-auto gap-2"
+            >
+              <ArrowRight className="w-5 h-5" />
+              Collect Points
+            </button>
+          </div>
         </div>
       </div>
     );

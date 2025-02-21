@@ -3,9 +3,6 @@ import { Navbar } from "../components/Navbar";
 import { GoalIcon, Star } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import MultiGame from "../assets/multiGame.png"
-import FlexGame from "../assets/flexGame.png"
-import GridGame from "../assets/gridGame.png"
 import GameShowcase from "../components/GameShowCase";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 
@@ -16,8 +13,8 @@ const LandingPage = () => {
   const stats = [
     { count: "50+", label: "Total Registers" },
     { count: "20+", label: "Total Problems" },
-    { count: "30+", label: "Total Games" },
-    { count: "50+", label: "Project Completed" },
+    { count: "5+", label: "Total Games" },
+    { count: "20+", label: "Leaderboard ranks" },
   ];
   return (
     <div className="bg-[#0f0f0f] h-full">
@@ -71,7 +68,7 @@ const LandingPage = () => {
             to={"/dashboard"}
             className="bg-[#cef241] font-medium py-4 px-6  rounded-3xl border-[#191919] cursor-pointer font-semibold hover:bg-[#cef098]"
           >
-            Play Now
+            Start Playing
           </NavLink>
         </motion.div>
 

@@ -5,6 +5,8 @@ import GetProfileInfo from "./get-profile";
 import { useState } from "react";
 import { ArrowBigDownDashIcon, Brain, Circle } from "lucide-react";
 import { motion } from "framer-motion";
+import {MenuIcon} from '../components/ui/MenuIcon'
+import { MenuButton } from "./ui/MenuButton";
 export const Navbar = () => {
   const { isAuth } = useStore();
 
@@ -73,12 +75,16 @@ export const Navbar = () => {
             </ul>
           </div>
         </div>
+       
         <NavLink
           to={"/login"}
           className="bg-[#cef241] font-semibold p-2 px-3 rounded-3xl border-[#191919] cursor-pointer"
         >
           {isAuth ? "Dashboard" : "Login Now"}
-        </NavLink>
+        </NavLink> 
+        <div className="sm:hidden block">
+          <MenuButton />
+        </div>
       </div>
     </motion.div>
   );
