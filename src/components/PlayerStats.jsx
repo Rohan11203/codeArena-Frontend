@@ -1,5 +1,5 @@
 import { useStore } from "../ContextAPi/store/ContextProvide";
-import { Trophy, Swords, Gamepad2 } from 'lucide-react';
+import { Trophy, Swords, Gamepad2, PencilIcon } from 'lucide-react';
 import { motion } from "framer-motion"
 import { Button } from "./ui/Button";
 
@@ -13,22 +13,19 @@ export default function PlayerStats() {
     initial={{ opacity:0, x:-50 }}
       animate={{ opacity:50, x:0 }}
       transition={{ duration:0.8, ease:"easeInOut" }}
-    className="hidden lg:block card w-96 h-fit bg-black border border-[#cef241] text-white shadow-2xl">
+    className="card w-96  bg-black border border-[#cef241] text-white shadow-2xl">
       <div className="card-body items-center text-center">
         {/* Avatar Section */}
         <div className="avatar placeholder">
           <div className=" rounded-full w-24 ring ring-[#cef241] ring-offset-[#cef241] ring-offset-2">
             <img src={Avtar}/>
-            { console.log("This is avtar",Avtar)}
-            { console.log("This is avtar",name)}
+           
             {/* <span className="text-3xl font-medium text-white">{name[0]}</span> */}
           </div>
         </div>
         
-        {/* Player Name */}
         <h2 className="card-title text-2xl font-bold text-[#cef241] mt-4">{name}</h2>
         
-        {/* Stats Grid */}
         <div className="w-full space-y-4 mt-4">
           {/* XP Progress */}
           <div className="p-4 rounded-lg border border-gray-800">

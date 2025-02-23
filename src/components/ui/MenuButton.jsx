@@ -33,38 +33,12 @@ export const MenuButton = () => {
 
       {/* Navigation Links (displayed when menu is open) */}
       {isMenuOpen && (
-        <nav className="absolute z-50 top-14 right-8 mt-4 bg-gray-800 text-white w-48 rounded-lg shadow-lg">
+        <nav className="absolute z-50 top-26 md:top-14 right-8 mt-4 bg-gray-800 text-white w-48 rounded-lg shadow-lg">
           <ul className="p-4">
-            <li className="py-2 hover:bg-gray-600 px-4">
-              <div className="dropdown dropdown-left">
-                <div tabIndex={0} role="button" className="">
-                  Profile
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="dropdown-content menu bg-black rounded-box z-[1] w-52 p-2"
-                >
-                  <li>
-                    <a>Xp {xp}</a>
-                  </li>
-                  <progress
-                    className="progress progress-warning w-full bg-gray-800"
-                    value={experienceXp}
-                    max="100"
-                  />
-                  <li>
-                    <a>Level {levelProgress}</a>
-                  </li>
-                  <progress
-                      className="progress progress-success w-full bg-gray-800"
-                      value={levelProgress}
-                      max="100"
-                    />
-                    <li className="p-2">
-                      <button onClick={handleLogout} className="bg-[#cef241] text-black hover:bg-yellow-200">Logout</button>
-                    </li>
-                </ul>
-              </div>
+            <li className="py-2 hover:bg-gray-600">
+            <a href="/profile" className="block px-4">
+                Profile
+              </a>
             </li>
 
             <li className="py-2 hover:bg-gray-600">

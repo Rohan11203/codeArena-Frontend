@@ -68,7 +68,7 @@ const FlowDiagram = () => {
           </p>
           <div className="text-sm text-gray-500">
             <p className="font-semibold text-gray-400">Rewards:</p>
-            <ul className="list-disc list-inside">
+            <ul className="">
               {rewards.map((reward, idx) => (
                 <li key={idx} className="text-gray-500">
                   {reward}

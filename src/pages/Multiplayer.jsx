@@ -58,11 +58,11 @@ export default function ClashOfCode() {
       {/* Header */}
       <div className="relative pt-4">
        <Navbar />
-        <div className="pt-4">
+        <div className="pt-4 ">
           <img
             src={backImage}
             alt="Clash of Code background"
-            className="w-full h-96 object-cover rounded-lg"
+            className="w-full h-96 object-cover border border-blue-400 rounded-lg"
           />
         </div>
 
@@ -75,7 +75,7 @@ export default function ClashOfCode() {
         </div>
         <button
           onClick={JoinRoom}
-          className="absolute top-8 right-4 bg-yellow-500 text-black font-bold py-2 px-4 rounded"
+          className="absolute top-28 right-4 bg-yellow-500 text-black font-bold py-2 px-4 rounded"
         >
           JOIN A CLASH
         </button>

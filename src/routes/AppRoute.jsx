@@ -13,6 +13,7 @@ import GridBoxArena from '../singlePlayerGames/GridBoxArena'
 import Leaderboard from '../pages/LeaderBoard'
 import CodeSimonSays from '../singlePlayerGames/CodeSimonSays'
 import QuizArena from '../singlePlayerGames/QuizArena'
+import ProfileSection from '../pages/ProfileSection'
 
 const PrivateRoutes = () => {
   const { isAuth } = useStore(); 
@@ -49,6 +50,7 @@ export const AppRoute = () => {
         <Route path='/codeSimon' element={ <CodeSimonSays /> } />
         <Route path='/quizarena' element={ <QuizArena /> } />
         <Route path='/clashofcode1/:id' element={<WaitingRoom />} />
+        <Route path='/profile' element={<ProfileSection />} />
       </Route>
 
       <Route element={<RestrictedRoutes />}>

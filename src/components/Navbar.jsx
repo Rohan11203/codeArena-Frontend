@@ -58,7 +58,7 @@ export const Navbar = () => {
               Play
             </div>
 
-            <ul className="absolute right-0 mt-2 w-52 bg-[#cef241] rounded-xl text-black font-medium shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300">
+            <ul className="absolute z-50 right-0 mt-2 w-52 bg-[#cef241] rounded-xl text-black font-medium shadow-lg opacity-0 group-hover:opacity-100 group-hover:translate-y-2 transition-all duration-300">
               <li>
                 <a
                   href="/singleplayer"

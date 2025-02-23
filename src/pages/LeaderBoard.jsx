@@ -45,9 +45,9 @@ const Leaderboard = () => {
   const sortedPlayers = [...players1].sort((a, b) => b.totalScore - a.totalScore);
 
   return (
-    <div className="bg-[#0f0f0f] p-8">
+    <div className="bg-[#0f0f0f] p-8 h-screen">
       <Navbar />
-      <Box sx={{ bgcolor: "#0f0f0f", p: 4, borderRadius: 2 }}>
+      <Box sx={{ bgcolor: "#0f0f0f", p: 4, borderRadius: 2, maxHeight: "550px", overflow: "auto" }}>
         <Typography
           variant="h4"
           component="h2"
