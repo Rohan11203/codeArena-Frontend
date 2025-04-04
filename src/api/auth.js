@@ -25,7 +25,7 @@ export async function onLogout() {
 }
 
 export async function getProfile() {
-  return await axios.get("https://codearena-server.onrender.com/user/profile");
+  return await axios.get("https://codearena-server.onrender.com/api/user/profile");
 }
 
 export async function submitCode(submitCodeData) {
