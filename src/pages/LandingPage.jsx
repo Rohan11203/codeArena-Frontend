@@ -17,7 +17,7 @@ const LandingPage = () => {
     { count: "20+", label: "Leaderboard ranks" },
   ];
   return (
-    <div className="bg-[#0f0f0f] h-full">
+    <div className="bg-[#0f0f0f] h-full text-black">
       <div className="p-5">
         <Navbar />
       </div>

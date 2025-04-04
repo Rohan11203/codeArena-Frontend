@@ -10,7 +10,7 @@ export const REVERSE_STRING_SNIPPET = {
       `,
   
       typescript: `function reverseWords(s: string): string {
-          return s.trim().split(/\s+/).reverse().join(" "); // return s.trim().split(/\s+/).reverse().join(" ");
+          return s.trim().split(/\s+/).reverse().join(" "); // Find the error in this line;
         }
         
         console.log(reverseWords("the sky is blue")); // "blue is sky the"
