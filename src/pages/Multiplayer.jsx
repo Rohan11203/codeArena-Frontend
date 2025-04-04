@@ -25,7 +25,7 @@ export default function ClashOfCode() {
   }
 
   const JoinRoom = () => {
-    wsRef.current = new WebSocket("ws://localhost:3000");
+    wsRef.current = new WebSocket("wss://codearena-server.onrender.com");
     wsRef.current.onopen = () => {
       console.log(name);
       console.log("Connected to the server");

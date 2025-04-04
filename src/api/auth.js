@@ -3,47 +3,47 @@ axios.defaults.withCredentials = true;
 
 export async function onRegistrtaion(registrationData) {
   return await axios.post(
-    "http://localhost:3000/api/user/register",
+    "https://codearena-server.onrender.com/api/user/register",
     registrationData
   );
 }
 
 export async function onLogin(loginData) {
-  return await axios.post("http://localhost:3000/api/user/login", loginData);
+  return await axios.post("https://codearena-server.onrender.com/api/user/login", loginData);
 }
 
 export async function OnGoogle() {
   try {
-    window.location.href = "http://localhost:3000/api/user/auth/google";
+    window.location.href = "https://codearena-server.onrender.com/api/user/auth/google";
   } catch (error) {
     console.error("Google Login Error : ", error) 
   }
 }
 
 export async function onLogout() {
-  return await axios.get("http://localhost:3000/api/user/logout");
+  return await axios.get("https://codearena-server.onrender.com/api/user/logout");
 }
 
 export async function getProfile() {
-  return await axios.get("http://localhost:3000/api/user/profile");
+  return await axios.get("https://codearena-server.onrender.com/user/profile");
 }
 
 export async function submitCode(submitCodeData) {
-  return await axios.post("http://localhost:3000/api/submit", submitCodeData);
+  return await axios.post("https://codearena-server.onrender.com/api/submit", submitCodeData);
 }
 
 export async function updateInfo(updateData) {
-  return await axios.put("http://localhost:3000/api/user/update", updateData);
+  return await axios.put("https://codearena-server.onrender.com/api/user/update", updateData);
 }
 
 export async function getProblem() {
-  return await axios.get("http://localhost:3000/api/problem/random");
+  return await axios.get("https://codearena-server.onrender.com/api/problem/random");
 }
 
 export async function getProblemById(id) {
-  return await axios.get(`http://localhost:3000/api/problem/${id}`);
+  return await axios.get(`https://codearena-server.onrender.com/api/problem/${id}`);
 }
 
 export async function getLeaderBoardData() {
-  return await axios.get(`http://localhost:3000/api/leaderboard`);
+  return await axios.get(`https://codearena-server.onrender.com/api/leaderboard`);
 }
