@@ -16,18 +16,18 @@ import QuizArena from '../singlePlayerGames/QuizArena'
 import ProfileSection from '../pages/ProfileSection'
 
 const PrivateRoutes = () => {
-  const { isAuth } = useStore(); 
+  const isAuth  = localStorage.getItem("isAuth")
   return (
     <>
-      {isAuth ? <Outlet /> : <Navigate to="/login"/>}
+      {isAuth === "true" ? <Outlet /> : <Navigate to="/login"/>}
     </>
   );
 }
 
 const RestrictedRoutes = () =>{
-  const { isAuth } = useStore();
+  const isAuth = localStorage.getItem("isAuth");  
   
-  return <>{!isAuth ? <Outlet /> : <Navigate to='/dashboard' />}</>
+  return <>{isAuth === "false" ? <Outlet /> : <Navigate to='/dashboard' />}</>
 }
 
 export const AppRoute = () => {

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { onRegistrtaion } from "../api/auth";
+import { OnGoogle, onRegistrtaion } from "../api/auth";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export const Register = () => {
@@ -34,6 +34,13 @@ export const Register = () => {
       setSuccess("");
     }
   };
+
+  const OnGoogleLogin = () => {
+      setIsAuth(true);
+      localStorage.setItem("isAuth", "true");
+       OnGoogle();
+    }
+
   return (
     <div className="h-screen flex justify-center items-center px-4 bg-[#1A1A1A] ">
       <div className="rounded-2xl p-10 border-2 w-full max-w-md text-white">
@@ -43,6 +50,13 @@ export const Register = () => {
             Join CodeArena and challenge the best! 🚀 Register now to compete in
             real-time coding.
           </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-3">
+          <div className="w-full max-w-md p-2 rounded-2xl flex items-center justify-center gap-2 border-2 border-gray-200 cursor-pointer hover:bg-gray-800">
+            <Goal />
+            <button onClick={OnGoogleLogin}>Continue with Google</button>
+          </div>
         </div>
 
         <form onSubmit={onSubmit} className="flex flex-col gap-6">
@@ -95,10 +109,9 @@ export const Register = () => {
             <div className="text-green-500 text-sm font-medium">{success}</div>
           )}
 
-          
           <NavLink to="/login" className="self-center p-4">
             <h1 className="font-medium underline cursor-pointer text-sm sm:text-base">
-              Already have an account? Login 
+              Already have an account? Login
             </h1>
           </NavLink>
 
