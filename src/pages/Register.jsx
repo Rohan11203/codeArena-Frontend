@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { OnGoogle, onRegistrtaion } from "../api/auth";
 import { NavLink, useNavigate } from "react-router-dom";
+import { Goal } from "lucide-react";
 
 export const Register = () => {
   const [values, setValues] = useState({
