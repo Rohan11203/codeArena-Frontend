@@ -37,7 +37,7 @@ export const Register = () => {
   };
 
   const OnGoogleLogin = () => {
-      setIsAuth(true);
+      // setIsAuth(true);
       localStorage.setItem("isAuth", "true");
        OnGoogle();
     }
