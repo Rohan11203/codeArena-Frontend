@@ -19,7 +19,7 @@ export const Button = () => {
     <div className="card-actions">
       <button
         onClick={onClick}
-        className="btn bg-[#F2E741] hover:bg-[#cef241] text-black btn-wide border-0 "
+        className="btn bg-[#F2E741] w-full hover:bg-[#cef241] text-black btn-wide border-0 "
       >
         Logout
       </button>

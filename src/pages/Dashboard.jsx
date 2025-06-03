@@ -32,7 +32,7 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      <div className="bg-black h-screen p-10 flex justify-between gap-5">
+      <div className=" h-screen p-10 flex justify-between gap-5">
         <div className="hidden lg:block">
         <PlayerStats />
         </div>

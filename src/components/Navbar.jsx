@@ -49,7 +49,7 @@ export const Navbar = () => {
           </div>
           <NavLink
             to={"/leaderboard"}
-            className="cursor-pointer hover:bg-[#2d2d2d] transition-all duration:0.6 hover:rounded-3xl hover:border-[#1d1d1d] hover:p-2 hover:px-4 "
+            className="cursor-pointer hover:bg-[#2d2d2d] transition-all duration:0.6 hover:rounded-3xl  hover:border-[#1d1d1d] hover:p-2 hover:px-4 "
           >
             Leaderboard
           </NavLink>
@@ -81,7 +81,7 @@ export const Navbar = () => {
 
         <NavLink
           to={"/login"}
-          className="bg-[#cef241] font-semibold p-2 px-3 rounded-3xl border-[#191919] cursor-pointer"
+          className="bg-[#cef241] text-black font-semibold p-2 px-3 rounded-3xl border-[#191919] cursor-pointer"
         >
           {isAuth ? "Dashboard" : "Login Now"}
         </NavLink>
