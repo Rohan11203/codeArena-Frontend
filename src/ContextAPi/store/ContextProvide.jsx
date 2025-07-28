@@ -1,5 +1,12 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { getProfile } from "../../api/auth";
+import { useNavigate } from "react-router-dom";
 
 const MyContext = createContext(null);
 export const StoreProvider = ({ children }) => {
@@ -18,6 +25,8 @@ export const StoreProvider = ({ children }) => {
   const editorRef = useRef();
   const [language, setLanguage] = useState("javascript");
 
+
+
   const fetchInfo = async () => {
     try {
       const { data } = await getProfile();
@@ -25,18 +34,25 @@ export const StoreProvider = ({ children }) => {
       setName(data?.user?.name || "");
       setLevel(data?.user?.level || 1);
       setAchievments(data?.user?.achievements || []);
-      setAvtar(data.user.Avtar); 
+      setAvtar(data.user.Avtar);
       setIsAuth(true); // Mark user as authenticated
     } catch (error) {
-      console.error("Auth error:", error.response?.data?.message || error.message);
+      console.error(
+        "Auth error:",
+        error.response?.data?.message || error.message
+      );
       setIsAuth(false); // Mark user as unauthenticated
+
+      localStorage.setItem("isAuth", "false");
+
+      window.location.href("/");
     }
   };
 
   useEffect(() => {
     fetchInfo(); // Runs once when StoreProvider mounts
   }, []);
-  
+
   return (
     <MyContext.Provider
       value={{
@@ -58,7 +74,7 @@ export const StoreProvider = ({ children }) => {
         editorRef,
         setLanguage,
         language,
-        Avtar
+        Avtar,
       }}
     >
       {children}

@@ -91,7 +91,7 @@ const GameShowcase = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-[#0f0f0f] min-h-screen">
+    <div className="bg-[#0A0A0A] min-h-screen">
       <AppBar position="static" sx={{ backgroundColor: "#1a1a1a" }}></AppBar>
 
       <Container maxWidth="lg" sx={{ mt: 4 }}>
@@ -143,7 +143,7 @@ const GameShowcase = () => {
                       variant="contained"
                       startIcon={<Play size={16} />}
                       sx={{
-                        backgroundColor: "#cef241",
+                        backgroundColor: "#FFEE58",
                         color: "black",
                         "&:hover": {
                           backgroundColor: "#b8d93a",
@@ -157,8 +157,8 @@ const GameShowcase = () => {
                       variant="outlined"
                       startIcon={<Info size={16} />}
                       sx={{
-                        color: "#cef241",
-                        borderColor: "#cef241",
+                        color: "#FFEE58",
+                        borderColor: "#FFEE58",
                         "&:hover": {
                           borderColor: "#b8d93a",
                           color: "#b8d93a",
@@ -195,14 +195,14 @@ const GameShowcase = () => {
               component="h2"
               align="center"
               gutterBottom
-              sx={{ color: "white", mb: 4 }}
+              sx={{ color: "white", mb: 4, pr: 4 }}
             >
               About CodeArena
             </Typography>
             <Typography
               variant="body1"
               align="center"
-              sx={{ color: "#7f7f82", mb: 6 }}
+              sx={{ color: "#7f7f82", mb: 6, pr: 4 }}
             >
               CodeArena is your ultimate destination for honing your coding
               skills through engaging, competitive, and interactive challenges.
@@ -212,7 +212,7 @@ const GameShowcase = () => {
             </Typography>
             <Grid container spacing={4}>
               {aboutFeatures.map((feature, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
+                <Grid item xs={11} sm={6} md={3} key={index}>
                   <Card
                     sx={{
                       height: "100%",
@@ -227,7 +227,7 @@ const GameShowcase = () => {
                         display: "flex",
                         justifyContent: "center",
                         mb: 2,
-                        color: "#cef241",
+                        color: "#FFEE58",
                       }}
                     >
                       {feature.icon}
