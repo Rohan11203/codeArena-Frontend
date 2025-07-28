@@ -1,219 +1,159 @@
 import React from "react";
-import {
-  ArrowRight,
-  Code,
-  Award,
-  Trophy,
-  Sword,
-  Shield,
-  Gamepad2,
-  Target,
-  Zap,
-} from "lucide-react";
+import { ArrowRight, Code, Trophy, Sword, Shield, Gamepad2, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import { useStore } from "../ContextAPi/store/ContextProvide";
 
 const FlowDiagram = () => {
-  const { xp, level } = useStore();
+  const { xp } = useStore();
 
-  const LevelNode = ({
-    title,
-    xpRequired,
-    rewards,
-    icon: Icon,
-    isActive,
-    isCompleted,
-    index,
-  }) => (
+  const LevelNode = ({ title, xpRequired, rewards, icon: Icon, isActive, isCompleted, index }) => (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1, ease: "easeInOut" }}
-      className="relative"
+      transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
+      className="relative flex-1"
     >
       <div
-        className={`group relative py-6 px-4 rounded-xl border transition-all duration-300 hover:scale-105 backdrop-blur-sm ${
+        className={`group relative h-full flex flex-col py-6 px-4 rounded-xl border transition-all duration-300 hover:scale-105 backdrop-blur-sm ${
           isActive
-            ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black border-[#cef241]/50 shadow-2xl shadow-[#cef241]/20"
+            ? "bg-[#111111] border-yellow-400/50 shadow-2xl shadow-yellow-400/20"
             : isCompleted
-            ? "bg-gradient-to-br from-gray-900 via-gray-800 to-black border-green-500/50 shadow-xl shadow-green-500/20"
-            : "bg-gradient-to-br from-gray-900 via-gray-800 to-black border-gray-700/50 shadow-lg hover:border-gray-600/50"
+            ? "bg-[#111111]/50 border-gray-700"
+            : "bg-[#111111]/50 border-gray-800 hover:border-gray-700"
         }`}
       >
-        {/* Glowing effect for active/completed states */}
-        {(isActive || isCompleted) && (
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rounded-xl opacity-50" />
-        )}
-        
-        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
           <div
-            className={`p-2.5 rounded-full transition-all duration-300 ${
+            className={`p-3 rounded-full transition-all duration-300 ${
               isActive
-                ? "bg-gradient-to-r from-[#cef241] to-green-400 shadow-lg shadow-[#cef241]/30"
+                ? "bg-gradient-to-r from-yellow-400 to-yellow-500 shadow-lg shadow-yellow-400/30"
                 : isCompleted
-                ? "bg-gradient-to-r from-green-500 to-green-400 shadow-lg shadow-green-500/30"
+                ? "bg-yellow-400"
                 : "bg-gray-700 group-hover:bg-gray-600"
             }`}
           >
-            <Icon size={18} className="text-black" />
+            <Icon size={20} className={isActive || isCompleted ? "text-black" : "text-white"} />
           </div>
         </div>
         
-        <div className="mt-6 relative z-10">
+        <div className="mt-8 text-center flex-grow">
           <h3
-            className={`text-lg font-bold mb-2 transition-colors duration-300 ${
+            className={`text-xl font-bold mb-2 transition-colors duration-300 ${
               isActive
-                ? "bg-gradient-to-r from-[#cef241] to-green-400 bg-clip-text text-transparent"
+                ? "bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent"
                 : isCompleted
-                ? "text-green-400"
+                ? "text-yellow-400"
                 : "text-gray-300 group-hover:text-gray-200"
             }`}
           >
             {title}
           </h3>
-          <p className="text-gray-400 text-sm mb-3 group-hover:text-gray-300 transition-colors duration-300">
-            Required: {xpRequired} XP
+          <p className="text-gray-400 text-sm mb-4 group-hover:text-gray-300">
+            {xpRequired} XP
           </p>
-          <div className="text-sm">
-            <p className="font-semibold text-gray-300 mb-1">Rewards:</p>
+          <div className="text-sm flex-grow">
             <ul className="space-y-1">
               {rewards.map((reward, idx) => (
-                <li key={idx} className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300 text-xs">
+                <li key={idx} className="text-gray-500 group-hover:text-gray-400 transition-colors text-xs">
                   • {reward}
                 </li>
               ))}
             </ul>
           </div>
         </div>
-
-        {/* Connection line to next level */}
-        {index < 4 && (
-          <div className="hidden md:block absolute top-1/2 -right-2 transform -translate-y-1/2">
-            <ArrowRight 
-              size={16} 
-              className={`${
-                isCompleted ? "text-green-400" : "text-gray-600"
-              } transition-colors duration-300`}
-            />
-          </div>
-        )}
       </div>
+
+      {/* Connection line for larger screens */}
+      {index < 4 && (
+        <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-0">
+          <ArrowRight 
+            size={20} 
+            className={`${isCompleted ? "text-yellow-400" : "text-gray-600"} transition-colors duration-300`}
+          />
+        </div>
+      )}
+       {/* Vertical connection line for smaller screens */}
+      {index < 4 && (
+        <div className="lg:hidden absolute left-1/2 -bottom-5 transform -translate-x-1/2 h-5 w-px bg-gray-600 z-0">
+            {isCompleted && <div className="h-full w-full bg-yellow-400"></div>}
+        </div>
+      )}
     </motion.div>
   );
 
   const levels = [
-    {
-      title: "Novice",
-      xpRequired: "0",
-      rewards: ["Basic Profile Badge", "Starter Kit"],
-      icon: Gamepad2,
-    },
-    {
-      title: "Apprentice",
-      xpRequired: "100",
-      rewards: ["New Avatar Frame", "Daily Bonus +10%"],
-      icon: Code,
-    },
-    {
-      title: "Adept",
-      xpRequired: "300",
-      rewards: ["Special Emotes", "Custom Title"],
-      icon: Shield,
-    },
-    {
-      title: "Expert",
-      xpRequired: "500",
-      rewards: ["Unique Badge", "Profile Themes"],
-      icon: Sword,
-    },
-    {
-      title: "Master",
-      xpRequired: "1000",
-      rewards: ["Elite Status", "All Features Unlocked"],
-      icon: Trophy,
-    },
+    { title: "Novice", xpRequired: "0", rewards: ["Basic Profile Badge"], icon: Gamepad2 },
+    { title: "Apprentice", xpRequired: "100", rewards: ["New Avatar Frame"], icon: Code },
+    { title: "Adept", xpRequired: "300", rewards: ["Special Emotes"], icon: Shield },
+    { title: "Expert", xpRequired: "500", rewards: ["Unique Badge"], icon: Sword },
+    { title: "Master", xpRequired: "1000", rewards: ["Elite Status"], icon: Trophy },
   ];
 
   const getCurrentLevelIndex = () => {
     for (let i = levels.length - 1; i >= 0; i--) {
-      if (xp >= parseInt(levels[i].xpRequired)) {
-        return i;
-      }
+      if (xp >= parseInt(levels[i].xpRequired)) return i;
     }
     return 0;
   };
-
-  const getNextLevelXP = () => {
-    const currentIndex = getCurrentLevelIndex();
-    if (currentIndex < levels.length - 1) {
-      return parseInt(levels[currentIndex + 1].xpRequired);
-    }
-    return parseInt(levels[levels.length - 1].xpRequired);
-  };
+  
+  const currentLevelIndex = getCurrentLevelIndex();
+  const nextLevelXP = currentLevelIndex < levels.length - 1 ? parseInt(levels[currentLevelIndex + 1].xpRequired) : 1000;
+  const progressToNextLevel = Math.min(((xp - parseInt(levels[currentLevelIndex].xpRequired)) / (nextLevelXP - parseInt(levels[currentLevelIndex].xpRequired))) * 100, 100);
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: "easeInOut" }}
-      className="flex-1 bg-gradient-to-br from-gray-900 via-gray-800 to-black border border-gray-700/50 rounded-2xl shadow-2xl backdrop-blur-sm overflow-x-hidden"
+      className="flex-1 bg-[#111111]/80 backdrop-blur-sm border border-gray-800 rounded-2xl shadow-2xl"
     >
-      <div className="p-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-[#cef241] to-green-400 bg-clip-text text-transparent mb-2">
-            Level Progression
+      <div className="p-6 sm:p-8">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-300 to-yellow-400 bg-clip-text text-transparent mb-2">
+            Your Progression
           </h2>
-          <p className="text-gray-400">Your journey to mastery</p>
+          <p className="text-gray-400">The journey to mastery awaits.</p>
         </div>
 
-        {/* Level Flow */}
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6 relative mb-8">
+        <div className="flex flex-col lg:flex-row gap-10 lg:gap-8 relative mb-10">
           {levels.map((levelData, index) => (
-            <React.Fragment key={index}>
-              <LevelNode
-                {...levelData}
-                index={index}
-                isActive={
-                  xp >= parseInt(levelData.xpRequired) &&
-                  (index === levels.length - 1 || xp < parseInt(levels[index + 1]?.xpRequired || "9999"))
-                }
-                isCompleted={xp >= parseInt(levelData.xpRequired)}
-              />
-            </React.Fragment>
+            <LevelNode
+              key={index}
+              {...levelData}
+              index={index}
+              isActive={currentLevelIndex === index}
+              isCompleted={xp >= parseInt(levelData.xpRequired)}
+            />
           ))}
         </div>
 
-        {/* Current Progress */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
-          className="bg-gray-800/50 hover:bg-gray-800/70 transition-all duration-300 p-6 rounded-xl border border-gray-700/30 hover:border-[#cef241]/30"
+          className="bg-[#1a1a1a]/50 hover:bg-[#1a1a1a]/80 transition-all duration-300 p-6 rounded-xl border border-gray-800 hover:border-yellow-400/30"
         >
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="p-2 bg-[#cef241]/20 rounded-lg">
-                <Zap className="text-[#cef241]" size={18} />
+              <div className="p-2 bg-yellow-400/20 rounded-lg">
+                <Zap className="text-yellow-400" size={18} />
               </div>
               <div>
                 <span className="font-semibold text-gray-200">Current Progress</span>
-                <div className="text-xs text-gray-400">Next level: {getNextLevelXP() - xp} XP to go</div>
+                <div className="text-xs text-gray-400">
+                  {currentLevelIndex < levels.length - 1 ? `${nextLevelXP - xp} XP to next level` : "You are at the max level!"}
+                </div>
               </div>
             </div>
-            <span className="text-[#cef241] font-bold text-lg">{xp} XP</span>
+            <span className="text-yellow-400 font-bold text-lg">{xp} XP</span>
           </div>
           <div className="w-full bg-gray-700/50 rounded-full h-3 overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-[#cef241] to-green-400 rounded-full"
+              className="h-full bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-full"
               initial={{ width: 0 }}
-              animate={{ width: `${Math.min((xp / 1000) * 100, 100)}%` }}
-              transition={{ duration: 1.5, delay: 1 }}
+              animate={{ width: `${progressToNextLevel}%` }}
+              transition={{ duration: 1.5, delay: 1, ease: "circOut" }}
             />
-          </div>
-          <div className="flex justify-between text-xs text-gray-400 mt-2">
-            <span>0 XP</span>
-            <span>1000 XP</span>
           </div>
         </motion.div>
       </div>

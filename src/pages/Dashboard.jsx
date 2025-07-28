@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Layout from "../components/Layout";
 import PlayerStats from "../components/PlayerStats";
 import FlowDiagram from "../components/FlowDiagram";
@@ -7,6 +7,7 @@ import { updateInfo } from "../api/auth";
 
 export const Dashboard = () => {
   const { fetchInfo, xp, setLevel } = useStore();
+
 
   async function updateLevel() {
     let newLevel = Math.floor(xp / 100);
@@ -19,7 +20,14 @@ export const Dashboard = () => {
   }
 
   useEffect(() => {
-    fetchInfo();
+    const handleFetch = async () => {
+      try {
+        await fetchInfo();
+      } catch (error) {
+        console.error("Failed to fetch user info, logging out:", error);
+      }
+    };
+    handleFetch();
   }, []);
 
   useEffect(() => {
@@ -32,11 +40,13 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      <div className=" h-screen p-10 flex justify-between gap-5">
-        <div className="hidden lg:block">
-        <PlayerStats />
+      <div className="bg-[#0A0A0A] min-h-screen text-white p-4 sm:p-6 lg:p-8">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-8">
+          {/* PlayerStats is now responsive and adapts to screen size */}
+          <PlayerStats />
+          {/* FlowDiagram takes the remaining space */}
+          <FlowDiagram />
         </div>
-        <FlowDiagram />
       </div>
     </Layout>
   );
