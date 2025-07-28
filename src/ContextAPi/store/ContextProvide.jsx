@@ -25,8 +25,6 @@ export const StoreProvider = ({ children }) => {
   const editorRef = useRef();
   const [language, setLanguage] = useState("javascript");
 
-
-
   const fetchInfo = async () => {
     try {
       const { data } = await getProfile();
@@ -42,8 +40,6 @@ export const StoreProvider = ({ children }) => {
         error.response?.data?.message || error.message
       );
       setIsAuth(false); // Mark user as unauthenticated
-
-      localStorage.setItem("isAuth", "false");
 
       window.location.href("/");
     }
