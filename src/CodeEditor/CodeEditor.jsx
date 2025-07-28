@@ -1,26 +1,32 @@
+import React, { useEffect, useRef, useState } from "react";
 import Editor from "@monaco-editor/react";
-import { useEffect, useRef, useState } from "react";
 import { useStore } from "../ContextAPi/store/ContextProvide";
-import LanguageSelector from "./LanguageSelector";
-import ProblemDetails from "./ProblemDetails";
-import TestCases from "./TestCases.jsx";
-import PlayersInRoom from "./room-players.jsx";
-import Layout from "../components/Layout.jsx";
-import { Navbar } from "../components/Navbar.jsx";
+import { Navbar } from "../components/Navbar";
 import { ALL_PROBLEM_SNIPPETS } from "../Boiler-Plate-Problems/product-array-except-self/constant.js";
+import { Resizable } from 're-resizable';
+import LanguageSelector from "./LanguageSelector"; 
+import ProblemDetails from "./ProblemDetails";
+import TestCases from "./TestCases";
+import PlayersInRoom from "./room-players.jsx";
+
 const CodeEditor = () => {
   const [value, setValue] = useState("");
-
   const { problemDetails, editorRef, language, setLanguage } = useStore();
 
-  const title = problemDetails.problem.title;
-  console.log(title);
+  // Set the initial language and code snippet
+  useEffect(() => {
+    if (problemDetails?.problem?.title) {
+      const initialLanguage = language || 'javascript';
+      const initialSnippet = ALL_PROBLEM_SNIPPETS[problemDetails.problem.title]?.[initialLanguage] || "Your code here...";
+      setLanguage(initialLanguage);
+      setValue(initialSnippet);
+    }
+  }, [problemDetails, language, setLanguage]);
 
-  const onSelect = (language) => {
-    setLanguage(language);
-    const updateSnippet =
-      ALL_PROBLEM_SNIPPETS[title][language] || "Snippet not available";
-    setValue(updateSnippet);
+  const onSelectLanguage = (lang) => {
+    setLanguage(lang);
+    const newSnippet = ALL_PROBLEM_SNIPPETS[problemDetails.problem.title]?.[lang] || `// Snippet for ${lang} not available.`;
+    setValue(newSnippet);
   };
 
   const onMount = (editor) => {
@@ -28,65 +34,102 @@ const CodeEditor = () => {
     editor.focus();
   };
 
-  useEffect(() => {
-    if (problemDetails.problem?.title && language) {
-      const updatedSnippet =
-        ALL_PROBLEM_SNIPPETS[problemDetails.problem.title]?.[language] ||
-        "Snippet not available";
-      setValue(updatedSnippet);
-    }
-  }, [problemDetails.problem?.title, language]);
-  console.log("Selected Language:", language);
-  console.log("Problem Title:", problemDetails.problem?.title);
-  console.log("Snippet Value:", value);
+  if (!problemDetails?.problem) {
+    return (
+        <div className="h-screen bg-[#0A0A0A] flex flex-col items-center justify-center text-white">
+            <Navbar />
+            <div className="text-center">
+                 <h1 className="text-2xl font-bold text-yellow-400">Loading Problem...</h1>
+                 <p className="text-gray-400">Please wait while we fetch the challenge.</p>
+            </div>
+        </div>
+    );
+  }
 
   return (
-    <div>
-      <div className="bg-[#0f0a19] pt-6"><Navbar /></div>
-      <div className="bg-[#0f0a19] flex-col min-h-screen w-full flex pt-4 md:flex-row">
+    <div className="bg-[#0A0A0A] h-screen flex flex-col font-sans">
+      <div className="pt-6 z-20 relative px-4">
+        <Navbar />
+      </div>
+      
+      <div className="flex-grow flex flex-col md:flex-row p-4 gap-4 overflow-hidden">
+        
         {/* Left Panel */}
-        <div className="text-white  py-2 px-2 grid gap-2 h-screen w-full md:w-[50%] overflow-hidden">
-          <div className="border p-4 flex-1  overflow-auto">
-            {/* Problem Component */}
-            <div>
-              <ProblemDetails
-                title={problemDetails.problem.title}
-                description={problemDetails.problem.description}
-                difficulty={problemDetails.problem.difficulty}
-                examples={problemDetails.problem.examples}
-                constraints={problemDetails.problem.constraints}
-              />
-            </div>
+        <Resizable
+          defaultSize={{ width: '50%', height: '100%' }}
+          minWidth="20%"
+          maxWidth="70%"
+          enable={{ right: true }}
+          className="hidden md:flex flex-col gap-4"
+        >
+          <div className="bg-[#111111] border border-gray-800 rounded-2xl flex-1 overflow-y-auto">
+            <ProblemDetails {...problemDetails.problem} />
           </div>
-
-          <div className="bg-[0f0a19] w-full p-4 flex-1 min-h-16 overflow-auto border border-1 ">
-            {/* Players in Room */}
+          <div className="bg-[#111111] border border-gray-800 rounded-2xl h-1/3 overflow-y-auto">
             <PlayersInRoom />
           </div>
-        </div>
+        </Resizable>
 
         {/* Right Panel */}
-        <div className="w-full flex flex-col gap-4">
-          {/* Code Editor Section */}
-          <div className="flex flex-col">
-            <LanguageSelector language={language} onSelect={onSelect} />
-            <Editor
-              height="50vh"
-              theme="vs-dark"
-              language={language}
-              value={value}
-              onMount={onMount}
-              onChange={(value) => setValue(value)}
-            />
-          </div>
+        <div className="flex-1 flex flex-col gap-4 overflow-hidden">
+           <div className="bg-[#111111] border border-gray-800 rounded-2xl flex-grow flex flex-col">
+              <div className="p-3 border-b border-gray-800 flex items-center justify-between">
+                <h2 className="text-lg font-semibold text-white">Code Editor</h2>
+                 <LanguageSelector language={language} onSelect={onSelectLanguage} />
+              </div>
+              <div className="flex-grow">
+                 <Editor
+                    height="100%"
+                    theme="vs-dark"
+                    language={language}
+                    value={value}
+                    onMount={onMount}
+                    onChange={(val) => setValue(val)}
+                    options={{
+                        minimap: { enabled: false },
+                        fontSize: 14,
+                        wordWrap: 'on',
+                        scrollBeyondLastLine: false,
+                    }}
+                />
+              </div>
+           </div>
+           <div className="bg-[#111111] border border-gray-800 rounded-2xl h-2/5 overflow-y-auto">
+                <TestCases problemDetails={problemDetails} />
+           </div>
+        </div>
 
-          {/* Test Cases Section */}
-          <div className="bg-[#0f0a19] border border-1 p-2 h-[40%] overflow-auto">
-            <TestCases problemDetails={problemDetails} />
-          </div>
+         {/* Mobile View */}
+        <div className="flex flex-col md:hidden gap-4 h-full">
+            <div className="bg-[#111111] border border-gray-800 rounded-2xl p-4 overflow-y-auto">
+                 <ProblemDetails {...problemDetails.problem} />
+            </div>
+             <div className="bg-[#111111] border border-gray-800 rounded-2xl flex-grow flex flex-col">
+              <div className="p-3 border-b border-gray-800 flex items-center justify-between">
+                 <h2 className="text-lg font-semibold text-white">Code Editor</h2>
+                 <LanguageSelector language={language} onSelect={onSelectLanguage} />
+              </div>
+              <div className="h-64">
+                 <Editor
+                    height="100%"
+                    theme="vs-dark"
+                    language={language}
+                    value={value}
+                    onMount={onMount}
+                    onChange={(val) => setValue(val)}
+                 />
+              </div>
+           </div>
+            <div className="bg-[#111111] border border-gray-800 rounded-2xl p-4 overflow-y-auto">
+                <TestCases problemDetails={problemDetails} />
+            </div>
+             <div className="bg-[#111111] border border-gray-800 rounded-2xl p-4 overflow-y-auto">
+                 <PlayersInRoom />
+            </div>
         </div>
       </div>
     </div>
   );
 };
+
 export default CodeEditor;
