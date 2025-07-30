@@ -43,12 +43,11 @@ export const Login = () => {
     }
   };
 
-  const onGoogleLogin = () => {
+  const onGoogleLogin = async () => {
     // This is a placeholder for the actual Google login flow
-    setIsAuth(true);
-    localStorage.setItem("isAuth", "true");
+    setIsAuth(true)
+    localStorage.setItem("isAuth","true")
     OnGoogle(); // This should ideally handle the redirect and token exchange
-    navigate("/dashboard");
   };
 
   return (

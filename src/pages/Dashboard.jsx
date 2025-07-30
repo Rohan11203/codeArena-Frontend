@@ -8,7 +8,6 @@ import { updateInfo } from "../api/auth";
 export const Dashboard = () => {
   const { fetchInfo, xp, setLevel } = useStore();
 
-
   async function updateLevel() {
     let newLevel = Math.floor(xp / 100);
 
@@ -20,14 +19,7 @@ export const Dashboard = () => {
   }
 
   useEffect(() => {
-    const handleFetch = async () => {
-      try {
-        await fetchInfo();
-      } catch (error) {
-        console.error("Failed to fetch user info, logging out:", error);
-      }
-    };
-    handleFetch();
+    fetchInfo();
   }, []);
 
   useEffect(() => {

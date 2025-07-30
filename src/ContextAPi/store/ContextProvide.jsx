@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { getProfile } from "../../api/auth";
-import { useNavigate } from "react-router-dom";
 
 const MyContext = createContext(null);
 export const StoreProvider = ({ children }) => {
@@ -39,9 +38,13 @@ export const StoreProvider = ({ children }) => {
         "Auth error:",
         error.response?.data?.message || error.message
       );
+      console.log("reaching here");
+      localStorage.setItem("isAuth","false")
       setIsAuth(false); // Mark user as unauthenticated
 
-      window.location.href("/");
+      if (window.location.pathname !== "/login") {
+        window.location.href = "/login";
+      }
     }
   };
 
